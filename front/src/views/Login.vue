@@ -31,9 +31,15 @@ export default {
   },
   methods: {
     login() {
-      axios.post('v1/auth/sign_in',this.user).then(response => {
+      axios.post('api/v1/auth/sign_in', {
+        email: this.email,
+        password: this.password
+      })
+      .then(response => {
         console.log(response);
       });
+      this.email = '';
+      this.password = '';
     }
   }
 };

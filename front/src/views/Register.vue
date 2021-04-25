@@ -31,15 +31,16 @@ export default {
   },
   methods: {
     register() {
-      axios.post('/v1/auth', {
+      axios.post('api/v1/auth', {
         email: this.email,
         password: this.password
       })
       .then(response => {
         console.log(response);
       });
-
-      }
+      this.email = '';
+      this.password = '';
     }
+  }
 };
 </script>
