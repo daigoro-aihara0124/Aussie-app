@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>掲示板に投稿する</h3>
-    <label for="name">ニックネーム：</label>
+    <label for="name">ネーム：</label>
     <input
       id="name"
       type="text"

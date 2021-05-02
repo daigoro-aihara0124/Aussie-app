@@ -4,6 +4,7 @@ import Home from './views/Home.vue';
 import Comments from './views/Comments.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
+import Mypage from './views/Mypage.vue';
 import store from './store';
 
 Vue.use(VueRouter);
@@ -45,6 +46,17 @@ export default new VueRouter({
           next('/comments');
         } else {
           next();
+        }
+      }
+    },
+    {
+      path: '/mypage',
+      component: Mypage,
+      beforeEnter(to, from, next) {
+        if (store.getters.idData['name']) {
+          next();
+        } else {
+          next('/');
         }
       }
     }

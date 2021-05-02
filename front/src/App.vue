@@ -4,6 +4,7 @@
       <template v-if="isAuthenticated">
         <router-link to="/" class="header-item">ホーム</router-link>
         <router-link to="/comments" class="header-item">掲示板</router-link>
+        <router-link to="/mypage" class="header-item">マイページ</router-link>
         <span class="header-item" @click="logout">ログアウト</span>
       </template>
       <template v-if="!isAuthenticated">
@@ -45,5 +46,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+
 }
 </style>
