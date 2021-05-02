@@ -5,6 +5,7 @@ import Comments from './views/Comments.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 import Mypage from './views/Mypage.vue';
+import UsersEdit from './views/UsersEdit.vue';
 import store from './store';
 
 Vue.use(VueRouter);
@@ -23,7 +24,7 @@ export default new VueRouter({
         if (store.getters.idTokens['access-token']) {
           next();
         } else {
-          next('/');
+          next('/login');
         }
       }
     },
@@ -32,7 +33,7 @@ export default new VueRouter({
       component: Register,
       beforeEnter(to, from, next) {
         if (store.getters.idTokens['access-token']) {
-          next('/comments');
+          next();
         } else {
           next();
         }
@@ -43,7 +44,7 @@ export default new VueRouter({
       component: Login,
       beforeEnter(to, from, next) {
         if (store.getters.idTokens['access-token']) {
-          next('/comments');
+          next();
         } else {
           next();
         }
@@ -56,7 +57,18 @@ export default new VueRouter({
         if (store.getters.idData['name']) {
           next();
         } else {
-          next('/');
+          next('/login');
+        }
+      }
+    },
+    {
+      path: '/usersedit',
+      component: UsersEdit,
+      beforeEnter(to, from, next) {
+        if (store.getters.idData['name']) {
+          next();
+        } else {
+          next('/login');
         }
       }
     }

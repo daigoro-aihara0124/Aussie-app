@@ -46,6 +46,21 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+/* register,loginのマスク */
+.eye::after {
+  font-family: 'FontAwesome';
+  content: "\f06e";
+}
 
+.eye-slash::after {
+  font-family: 'FontAwesome';
+  content: "\f070";
+}
+
+.input-icon {
+  position: relative;
+  margin-top: -25px;
+  margin-left: -20px;
 }
 </style>

@@ -107,6 +107,20 @@ export default new Vuex.Store({
        localStorage.removeItem('email');
        router.replace('/login');
       });
+    },
+    updateIdData: async function({ commit }, authData) {
+      return await axios.put('/api/v1/auth', authData, {
+        headers: {
+          'access-token': localStorage.getItem('access-token'),
+          'uid': localStorage.getItem('uid'),
+          'client': localStorage.getItem('client')
+        }
+      })
+      .then(response => {
+        commit('updateIdData', response.data['data']);
+        commit('updateLocalStorage', { idData: response.data['data'], idTokens: response.headers });
+        router.replace('/mypage');
+      });
     }
   },
 });

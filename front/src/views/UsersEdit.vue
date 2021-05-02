@@ -1,7 +1,7 @@
 <template>
   <div>
+    <h3>こちらは、{{ idData.name }}さんの編集ページです。</h3>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <h3>登録</h3>
     <label for="name">名前：</label>
     <input
       id="name"
@@ -16,18 +16,7 @@
       v-model="email"
     >
     <br><br>
-    <label for="name">パスワード：</label>
-      <input
-      :type="inputType"
-      id="password"
-      class="input"
-      v-model="password"
-      >
-      <span class="input-icon">
-        <span :class="iconType" @click="onClick"></span>
-      </span>
-    <br><br>
-    <button @click="register">送信</button>
+    <button @click="updateIdData">編集する</button>
   </div>
 </template>
 
@@ -38,29 +27,22 @@ export default {
     return {
       name: '',
       email: '',
-      password: '',
-      isChecked: false
+      password:'',
     };
   },
   computed: {
-    inputType: function () {
-      return this.isChecked ? "text" : "password";
-    },
-    iconType: function () {
-     return this.isChecked ? "eye-slash" : "eye";
-   }
+    idData() {
+      return this.$store.getters.idData;
+    }
   },
   methods: {
-    onClick: function() {
-      this.isChecked = !this.isChecked;
-    },
-    register: async function() {
-      await this.$store.dispatch('register', {
+    updateIdData: async function() {
+      await this.$store.dispatch('updateIdData', {
         name: this.name,
         email: this.email,
         password: this.password
       });
     }
-  }
+  },
 };
 </script>
