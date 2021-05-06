@@ -9,7 +9,8 @@ export default new Vuex.Store({
   state: {
     idData: {
       'name': null,
-      'email': null
+      'email': null,
+      'image': null
     },
     idTokens: {
       'access-token': null,
@@ -25,6 +26,7 @@ export default new Vuex.Store({
     updateIdData(state, idData) {
       state.idData['name'] = idData['name'];
       state.idData['email'] = idData['email'];
+      state.idData['image'] = idData['image'];
     },
     updateIdTokens(state, idTokens) {
       state.idTokens['access-token'] = idTokens['access-token'];
@@ -34,6 +36,7 @@ export default new Vuex.Store({
     updateLocalStorage(state, { idData, idTokens }) {
       localStorage.setItem('name', idData['name']);
       localStorage.setItem('email', idData['email']);
+      localStorage.setItem('image', idData['image']);
       localStorage.setItem('access-token', idTokens['access-token']);
       localStorage.setItem('client', idTokens['client']);
       localStorage.setItem('uid', idTokens['uid']);
@@ -43,7 +46,8 @@ export default new Vuex.Store({
     autoLogin({ commit }) {
       const idData = {
         'name':  localStorage.getItem('name'),
-        'email':  localStorage.getItem('email')
+        'email':  localStorage.getItem('email'),
+        'image':  localStorage.getItem('image')
       };
       const idTokens = {
         'access-token':  localStorage.getItem('access-token'),
@@ -59,13 +63,25 @@ export default new Vuex.Store({
       return await axios.post('api/v1/auth', {
         name: authData.name,
         email: authData.email,
-        password: authData.password
+        password: authData.password,
       })
       .then(response => {
         commit('updateIdTokens', response.headers);
         commit('updateIdData', response.data['data']);
         commit('updateLocalStorage', { idData: response.data['data'], idTokens: response.headers });
-        router.push('/comments');
+        router.push('/mypage');
+      });
+    },
+    guestUserLogin: async function({ commit }, authData) {
+       return await axios.post('api/v1/auth/sign_in', {
+         email: authData.email,
+         password: authData.password
+      })
+      .then(response => {
+        commit('updateIdTokens', response.headers);
+        commit('updateIdData', response.data['data']);
+        commit('updateLocalStorage', { idData: response.data['data'], idTokens: response.headers });
+        router.push('/mypage');
       });
     },
     login: async function({ commit }, authData) {
@@ -77,7 +93,7 @@ export default new Vuex.Store({
         commit('updateIdTokens', response.headers);
         commit('updateIdData', response.data['data']);
         commit('updateLocalStorage', { idData: response.data['data'], idTokens: response.headers });
-        router.push('/comments');
+        router.push('/mypage');
       });
     },
     logout: async function({ commit }) {
@@ -91,7 +107,8 @@ export default new Vuex.Store({
      .then(() => {
        const idData = {
          'name': null,
-         'email': null
+         'email': null,
+         'image': null
        };
        const idTokens = {
           'access-token': null,
@@ -105,12 +122,14 @@ export default new Vuex.Store({
        localStorage.removeItem('client');
        localStorage.removeItem('name');
        localStorage.removeItem('email');
+       localStorage.removeItem('image');
        router.replace('/login');
       });
     },
-    updateIdData: async function({ commit }, authData) {
-      return await axios.put('/api/v1/auth', authData, {
+    updateIdData({ commit }, formData) {
+      axios.put('/api/v1/auth', formData, {
         headers: {
+          'content-type': 'multipart/form-data',
           'access-token': localStorage.getItem('access-token'),
           'uid': localStorage.getItem('uid'),
           'client': localStorage.getItem('client')
