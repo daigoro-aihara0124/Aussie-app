@@ -1,7 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from './views/Home.vue';
-import Comments from './views/Comments.vue';
+import SchoolRegister from './views/SchoolRegister.vue';
+import SchoolIndex from './views/SchoolIndex.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 import Mypage from './views/Mypage.vue';
@@ -18,8 +19,19 @@ export default new VueRouter({
       component: Home,
     },
     {
-      path: '/comments',
-      component: Comments,
+      path: '/schoolRegister',
+      component: SchoolRegister,
+      beforeEnter(to, from, next) {
+        if (store.getters.idTokens['access-token']) {
+          next();
+        } else {
+          next('/login');
+        }
+      }
+    },
+    {
+      path: '/schoolIndex',
+      component: SchoolIndex,
       beforeEnter(to, from, next) {
         if (store.getters.idTokens['access-token']) {
           next();
@@ -65,10 +77,10 @@ export default new VueRouter({
       path: '/usersedit',
       component: UsersEdit,
       beforeEnter(to, from, next) {
-        if (store.getters.idData['name']) {
+        if (store.getters.idData['name'] && store.getters.idData['email'] !== 'guest@example.com') {
           next();
         } else {
-          next('/login');
+          next('/');
         }
       }
     }
