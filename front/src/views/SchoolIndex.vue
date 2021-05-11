@@ -7,28 +7,16 @@
         <tr>
           <th>スクール名</th>
           <br><br>
-          <th>スクール紹介</th>
-          <br><br>
-          <th>期間</th>
-          <br><br>
-          <th>料金</th>
-          <br><br>
           <th>場所</th>
           <br><br>
           <th>予約</th>
         </tr>
-        <tr v-for="post in posts" :key="post.name">
+        <tr v-for="post in postData" :key="post.id">
           <td>{{ post.name }}</td>
-          <br><br>
-          <td>{{ post.comment }}</td>
-          <br><br>
-          <td>{{ post.term }}</td>
-          <br><br>
-          <td>{{ post.fee }}</td>
           <br><br>
           <td>{{ post.address }}</td>
           <br><br>
-          <td>予約する</td>
+          <td><router-link to="/reservation">予約する</router-link></td>
         </tr>
       </tbody>
     </table>
@@ -36,25 +24,20 @@
 </template>
 
 <script>
-import axios from 'axios';
 
 export default {
   data() {
     return {
-      name: '',
-      comment: '',
-      term: '',
-      fee: '',
-      address: '',
-      posts: []
-    };
+      post: {}
+    }
+  },
+  computed: {
+    postData() {
+      return this.$store.getters.postData;
+    }
   },
   created() {
-    axios.get('api/v1/posts.json')
-    .then(response => {
-      this.posts = response.data;
-      console.log(response);
-    });
+    this.$store.dispatch('created')
   }
 };
 </script>

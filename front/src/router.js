@@ -3,6 +3,9 @@ import VueRouter from "vue-router";
 import Home from './views/Home.vue';
 import SchoolRegister from './views/SchoolRegister.vue';
 import SchoolIndex from './views/SchoolIndex.vue';
+import SchoolDetail from './views/SchoolDetail.vue';
+import Reservation from './views/Reservation.vue';
+import MyReserved from './views/MyReserved.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 import Mypage from './views/Mypage.vue';
@@ -32,6 +35,41 @@ export default new VueRouter({
     {
       path: '/schoolIndex',
       component: SchoolIndex,
+      beforeEnter(to, from, next) {
+        if (store.getters.idTokens['access-token']) {
+          next();
+        } else {
+          next('/login');
+        }
+      }
+    },
+    {
+      path: '/posts/:id',
+      name: 'SchoolDetail',
+      component: SchoolDetail,
+      params: true,
+      beforeEnter(to, from, next) {
+        if (store.getters.idTokens['access-token']) {
+          next();
+        } else {
+          next('/login');
+        }
+      }
+    },
+    {
+      path: '/reservation',
+      component: Reservation,
+      beforeEnter(to, from, next) {
+        if (store.getters.idTokens['access-token']) {
+          next();
+        } else {
+          next('/login');
+        }
+      }
+    },
+    {
+      path: '/myReserved',
+      component: MyReserved,
       beforeEnter(to, from, next) {
         if (store.getters.idTokens['access-token']) {
           next();

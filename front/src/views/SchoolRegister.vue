@@ -5,80 +5,48 @@
     <input
       id="name"
       type="text"
-      v-model="name"
+      v-model="post.name"
     >
     <br><br>
     <label for="comment">スクール紹介：</label>
     <textarea
       id="comment"
-      v-model="comment"
+      v-model="post.comment"
     ></textarea>
     <br><br>
     <label for="term">期間：</label>
     <input
       id="term"
-      v-model="term"
+      v-model="post.term"
     >
     <br><br>
     <label for="fee">料金：</label>
     <input
       id="fee"
-      v-model="fee"
+      v-model="post.fee"
     >
     <br><br>
     <label for="address">場所：</label>
     <input
       id="address"
-      v-model="address"
+      v-model="post.address"
     >
     <br><br>
-    <button @click="createComment">内容を登録する</button>
+    <button @click="createInfo">内容を登録する</button>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import router from "../router";
 
 export default {
   data() {
     return {
-      name: '',
-      comment: '',
-      term: '',
-      fee: '',
-      address: '',
-      posts: []
+      post: {},
     };
   },
-  created() {
-    axios.get('api/v1/posts.json')
-    .then(response => {
-      this.posts = response.data;
-      console.log(response);
-    });
-  },
   methods: {
-    createComment() {
-      axios.post('api/v1/posts', {
-        name: this.name,
-        comment: this.comment,
-        term: this.term,
-        fee: this.fee,
-        address: this.address
-      })
-      .then(response => {
-        console.log(response);
-        router.push('/schoolIndex');
-      })
-      .catch(error => {
-        console.log(error);
-      });
-      this.name = '';
-      this.comment = '';
-      this.term = '';
-      this.fee = '';
-      this.address = '';
+    async createInfo() {
+      await this.$store.dispatch('createInfo', this.post);
     }
   }
 };

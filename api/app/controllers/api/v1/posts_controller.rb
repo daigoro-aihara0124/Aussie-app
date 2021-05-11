@@ -1,6 +1,6 @@
 class Api::V1::PostsController < ApplicationController
   def index
-    posts = Post.select(:name, :comment, :term, :fee, :address)
+    posts = Post.select(:id, :name, :address)
     render json: posts
   end
 
@@ -24,7 +24,7 @@ class Api::V1::PostsController < ApplicationController
     end
 
     def post_params
-      params.fetch(:post, {}).permit(:name, :comment, :term, :fee, :address)
+      params.require(:post).permit(:name, :comment, :term, :fee, :address)
     end
 
     def render_status_404(exception)

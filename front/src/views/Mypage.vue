@@ -6,6 +6,8 @@
     <template v-if="isAuthenticated">
       <router-link to="/usersedit" class="header-item">会員情報の編集ページへ</router-link>
     </template>
+    <br><br>
+    <router-link to="/myReserved" class="header-item">予約済みのスクールページへ</router-link>
   </div>
 </template>
 

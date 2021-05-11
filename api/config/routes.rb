@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   namespace :api, {format: 'json'} do
     namespace :v1 do
+      resources :posts, only: [:index, :show, :create]
+
       mount_devise_token_auth_for 'User', at: 'auth', controllers: {
         registrations: 'api/v1/auth/registrations'
       }
-
-      resources :posts
     end
   end
 end
