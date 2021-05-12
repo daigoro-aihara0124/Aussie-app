@@ -1,6 +1,12 @@
 <template>
   <div>
     <h3>学校を登録する</h3>
+    <label for="address">場所：</label>
+    <input
+      id="address"
+      v-model="post.address"
+    >
+    <br><br>
     <label for="name">スクール名：</label>
     <input
       id="name"
@@ -24,12 +30,6 @@
     <input
       id="fee"
       v-model="post.fee"
-    >
-    <br><br>
-    <label for="address">場所：</label>
-    <input
-      id="address"
-      v-model="post.address"
     >
     <br><br>
     <button @click="createInfo">内容を登録する</button>

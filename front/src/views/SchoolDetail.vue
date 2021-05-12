@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h2>学校一覧</h2>
+    <h2>学校詳細</h2>
     <br><br>
     <table>
       <tbody>
         <tr>
-          <th>ID</th>
+          <th>id</th>
           <br><br>
           <th>場所</th>
           <br><br>
@@ -13,11 +13,13 @@
           <br><br>
           <th>スクール紹介</th>
           <br><br>
-          <th>スクール詳細</th>
+          <th>期間</th>
+          <br><br>
+          <th>料金</th>
           <br><br>
           <th>予約</th>
         </tr>
-        <tr v-for="post in postData" :key="post.id">
+        <tr>
           <td>{{ post.id }}</td>
           <br><br>
           <td>{{ post.address }}</td>
@@ -26,7 +28,9 @@
           <br><br>
           <td>{{ post.comment }}</td>
           <br><br>
-          <td><router-link :to="{ name: 'SchoolDetail', params: { id: post.id } }">詳細ページに行く</router-link></td>
+          <td>{{ post.term }}</td>
+          <br><br>
+          <td>¥{{ post.fee }}〜</td>
           <br><br>
           <td><router-link to="/reservation">予約する</router-link></td>
         </tr>
@@ -38,18 +42,13 @@
 <script>
 
 export default {
-  data() {
-    return {
-      post: {}
-    }
-  },
   computed: {
     postData() {
       return this.$store.getters.postData;
+    },
+    post() {
+      return this.postData.find(postId => postId.id === this.$route.params.id) || {}
     }
-  },
-  created() {
-    this.$store.dispatch('created')
   }
 };
 </script>
