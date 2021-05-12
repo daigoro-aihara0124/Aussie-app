@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UserImage :image="idData.image_url" />
+    <UserImage :image="idData.image" />
     <h3>こちらは、{{ idData.name }}さんのページです。</h3>
     <h3>メールアドレスは、{{ idData.email }}です。</h3>
     <template v-if="isAuthenticated">

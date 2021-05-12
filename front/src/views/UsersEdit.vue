@@ -18,18 +18,19 @@
     <li class="image__field">
       <label for="user_image" class="text__top">プロフィール画像：</label>
       <label for="user_image">
-        <img v-if="imageFile" :src="imageUrl" class="user__image">
-        <UserImage v-else :image="idData.image_url" />
+        <img v-if="imageUrl" :src="imageUrl" class="user__image">
+        <UserImage v-else :image="idData.image" />
       </label>
       <input
         id="user_image"
         type="file"
-        @change="imagePreview($event)"
-        ref="imagePreview"
+        @change="setImage"
+        ref="preview"
         accept="image/*"
         name="user[image]"
         class="hidden"
       >
+     <button @click="deleteImage">削除する</button>
     </li>
     <br><br>
     <button @click="updateIdData">編集する</button>
@@ -47,8 +48,7 @@ export default {
     return {
       name: '',
       email: '',
-      imageUrl: null,
-      imageFile: null,
+      imageUrl: '',
     };
   },
   computed: {
@@ -57,21 +57,26 @@ export default {
     }
   },
   methods: {
-    imagePreview() {
-      const image = this.$refs.imagePreview.files[0];
-      this.imageFile = image;
+    setImage() {
+      const image = this.$refs.preview.files[0];
       this.imageUrl = URL.createObjectURL(image);
-      this.$refs.imagePreview.value = '';
+      this.$refs.preview.value = "";
     },
     updateIdData() {
-      const isNotNoImage = (this.imageUrl !== require('../assets/images/no_image.jpg'));
-
+      const existsImage = (this.imageUrl !== require('../assets/images/no_image.jpg'));
       let formData = new FormData();
 
       formData.append('name', this.name);
       formData.append('email', this.email);
-      if (isNotNoImage) formData.append('image', this.imageFile);
+      if (existsImage) formData.append('image', this.imageUrl);
 
+      return this.$store.dispatch('updateIdData', formData);
+    },
+    deleteImage() {
+      let formData = new FormData();
+      formData.append('image', this.imageUrl);
+      this.imageUrl = '';
+      URL.revokeObjectURL(this.imageUrl);
       return this.$store.dispatch('updateIdData', formData);
     }
   },
