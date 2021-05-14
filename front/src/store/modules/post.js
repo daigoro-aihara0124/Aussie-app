@@ -24,8 +24,12 @@ export default {
         commit('updatePostData', response.data);
       });
     },
-    async createInfo({ commit }, post) {
-      const response = await axios.post('api/v1/posts', post)
+    async createInfo({ commit }, formData) {
+      const response = await axios.post('api/v1/posts', formData, {
+        headers: {
+          'content-type': 'multipart/form-data',
+        }
+      })
       const savedPost = response.data
       commit('addPost', savedPost);
       router.push('/schoolIndex');

@@ -1,7 +1,7 @@
 class Api::V1::PostsController < ApplicationController
   def index
     posts = Post.select(:id, :address, :name, :comment, :term, :fee)
-    render json: posts
+    render json: Post.all, methods: [:image_url]
   end
 
   def show
@@ -11,7 +11,7 @@ class Api::V1::PostsController < ApplicationController
   def create
     post = Post.new(post_params)
     if post.save
-      render json: post, status: :created
+      render json: post, status: :created, methods: [:image_url]
     else
       render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
     end
@@ -24,7 +24,7 @@ class Api::V1::PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:address, :name, :comment, :term, :fee)
+      params.permit(:name, :comment, :term, :fee, :address, :image)
     end
 
     def render_status_404(exception)

@@ -5,6 +5,8 @@
     <table>
       <tbody>
         <tr>
+          <th>画像</th>
+          <br><br>
           <th>ID</th>
           <br><br>
           <th>場所</th>
@@ -18,6 +20,8 @@
           <th>予約</th>
         </tr>
         <tr v-for="post in postData" :key="post.id">
+          <td><img :src="post.image_url" class="post_image" /></td>
+          <br><br>
           <td>{{ post.id }}</td>
           <br><br>
           <td>{{ post.address }}</td>
@@ -53,3 +57,14 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .post_image {
+    height: 150px;
+    width: 150px;
+    margin: 17px;
+    border-radius: 10px;
+    border: 1px solid gray;
+  }
+
+</style>
