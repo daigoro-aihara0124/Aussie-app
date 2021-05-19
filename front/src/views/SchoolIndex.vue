@@ -17,7 +17,6 @@
           <br><br>
           <th>スクール詳細</th>
           <br><br>
-          <th>予約</th>
         </tr>
         <tr v-for="post in postData" :key="post.id">
           <td><img :src="post.image_url" class="post_image" /></td>
@@ -32,7 +31,6 @@
           <br><br>
           <td><router-link :to="{ name: 'SchoolDetail', params: { id: post.id } }">詳細ページに行く</router-link></td>
           <br><br>
-          <td><router-link to="/reservation">予約する</router-link></td>
         </tr>
       </tbody>
     </table>
@@ -42,19 +40,14 @@
 <script>
 
 export default {
-  data() {
-    return {
-      post: {}
-    }
+  created() {
+    this.$store.dispatch('fetchPost')
   },
   computed: {
     postData() {
       return this.$store.getters.postData;
     }
   },
-  created() {
-    this.$store.dispatch('created')
-  }
 };
 </script>
 

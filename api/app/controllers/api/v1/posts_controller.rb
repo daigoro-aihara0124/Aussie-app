@@ -1,26 +1,43 @@
 class Api::V1::PostsController < ApplicationController
+
   def index
-    posts = Post.select(:id, :address, :name, :comment, :term, :fee)
     render json: Post.all, methods: [:image_url]
   end
 
   def show
-    render json: @post
+    post = Post.find(params[:id])
+    render json: post, methods: [:image_url]
   end
 
   def create
     post = Post.new(post_params)
     if post.save
-      render json: post, status: :created, methods: [:image_url]
+      render json: post, methods: [:image_url]
     else
       render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    post = Post.find(params[:id])
+    if post.update(post_params)
+      render json: post, methods: [:image_url]
+    else
+      render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    if post.destroy
+      render json: post
     end
   end
 
   private
 
     def set_post
-      @post = Post.find(params[:id])
+      post = Post.find(params[:id])
     end
 
     def post_params
