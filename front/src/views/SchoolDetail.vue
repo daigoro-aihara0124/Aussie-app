@@ -19,11 +19,13 @@
           <br><br>
           <th>料金</th>
           <br><br>
+          <th>投稿者ID</th>
+          <br><br>
           <th>予約</th>
+          <template v-if="isAuthenticated">
+            <th>編集</th>
+          </template>
           <br><br>
-          <th>編集</th>
-          <br><br>
-          <th>削除</th>
         </tr>
         <tr>
           <td><img :src="post.image_url" class="post_image" /></td>
@@ -40,11 +42,13 @@
           <br><br>
           <td>¥{{ post.fee }}〜</td>
           <br><br>
+          <td>{{ post.user_id }}</td>
+          <br><br>
           <td><router-link to="/reservation">予約する</router-link></td>
           <br><br>
-          <td><router-link :to="{ path: `/posts/${post.id}/edit` }">編集ページ</router-link></td>
-          <br><br>
-          <td><button @click="del(post.id)">内容を削除する</button></td>
+          <template v-if="isAuthenticated">
+            <td><router-link :to="{ path: `/posts/${post.id}/edit` }">編集ページ</router-link></td>
+          </template>
         </tr>
       </tbody>
     </table>
@@ -66,8 +70,14 @@ export default {
         comment: '',
         term: '',
         fee: '',
+        user_id: '',
       }
     };
+  },
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters.idData['id'] == this.post.user_id;
+    }
   },
   mounted: function() {
     this.setPostDetail(this.id);
@@ -82,12 +92,9 @@ export default {
         this.post.comment = res.data.comment;
         this.post.term = res.data.term;
         this.post.fee = res.data.fee;
+        this.post.user_id = res.data.user_id;
       });
     },
-    del(id) {
-      this.$store.dispatch('deleteInfo', id)
-      this.$router.push('/schoolIndex');
-    }
   }
 };
 </script>

@@ -46,6 +46,9 @@ export default {
   computed: {
     postData() {
       return this.$store.getters.postData;
+    },
+    idData() {
+      return this.$store.getters.idData;
     }
   },
 };

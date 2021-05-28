@@ -66,7 +66,7 @@ export default new VueRouter({
         if (store.getters.idTokens['access-token']) {
           next();
         } else {
-          next('/login');
+          next('/');
         }
       }
     },

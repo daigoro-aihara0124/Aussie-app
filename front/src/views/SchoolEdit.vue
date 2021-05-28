@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>こちらは、{{ post.name }}さんの編集ページです。</h3>
+    <h3>こちらは、ID {{ post.user_id }}さんの編集ページです。</h3>
     <h3>学校を編集する</h3>
       <label for="image">画像：</label>
       <input
@@ -42,7 +42,13 @@
       v-model="post.fee"
     >
     <br><br>
-    <button @click="editInfo(post.id)">内容を編集する</button>
+    <template v-if="isAuthenticated">
+      <button @click="editInfo(post.id)">内容を編集する</button>
+    </template>
+    <br><br>
+    <template v-if="isAuthenticated">
+      <button @click="del(post.id)">内容を削除する</button>
+    </template>
   </div>
 </template>
 
@@ -61,8 +67,14 @@ export default {
         comment: '',
         term: '',
         fee: '',
+        user_id: '',
       }
     };
+  },
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters.idData['id'] == this.post.user_id;
+    }
   },
   mounted: function() {
     this.setPostEdit(this.id);
@@ -77,6 +89,7 @@ export default {
         this.post.comment = res.data.comment;
         this.post.term = res.data.term;
         this.post.fee = res.data.fee;
+        this.post.user_id = res.data.user_id
       });
     },
     setImage(e) {
@@ -92,9 +105,28 @@ export default {
       formData.append("comment", this.post.comment);
       formData.append("term", this.post.term);
       formData.append("fee", this.post.fee);
+      formData.append("user_id", this.post.user_id);
       await axios.put(`api/v1/posts/${id}`, formData, {
         headers: {
           'content-type': 'multipart/form-data',
+          'access-token':  localStorage.getItem('access-token'),
+          'uid':  localStorage.getItem('uid'),
+          'client':  localStorage.getItem('client')
+        }
+      })
+      .then(() => {
+        this.$router.push('/schoolIndex');
+      }, (error) => {
+        console.log(error);
+      });
+    },
+    async del(id) {
+      await axios.delete(`api/v1/posts/${id}`, {
+        headers: {
+          'content-type': 'multipart/form-data',
+          'access-token':  localStorage.getItem('access-token'),
+          'uid':  localStorage.getItem('uid'),
+          'client':  localStorage.getItem('client')
         }
       })
       .then(() => {
