@@ -1,7 +1,8 @@
-class Api::V1::PostsController < ApplicationController
+class Api::V1::PostsController < Api::V1::ApiController
+  before_action :authenticate_api_v1_user!, only: %i[update destroy]
 
   def index
-    render json: Post.all, methods: [:image_url]
+    render json: Post.eager_load(:user), methods: [:image_url]
   end
 
   def show
@@ -29,19 +30,18 @@ class Api::V1::PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    if post.destroy
-      render json: post
-    end
+    post.destroy!
+    render json: post,  methods: [:image_url]
   end
 
   private
 
     def set_post
-      post = Post.find(params[:id])
+
     end
 
     def post_params
-      params.permit(:name, :comment, :term, :fee, :address, :image)
+      params.permit(:name, :comment, :term, :fee, :address, :image).merge(user_id: current_api_v1_user.id)
     end
 
     def render_status_404(exception)
