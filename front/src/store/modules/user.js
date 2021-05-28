@@ -4,6 +4,7 @@ import router from "../../router";
 export default {
   state: {
     idData: {
+      'id': null,
       'name': null,
       'email': null,
       'image': null
@@ -20,6 +21,7 @@ export default {
   },
   mutations: {
     updateIdData(state, idData) {
+      state.idData['id'] = idData['id'];
       state.idData['name'] = idData['name'];
       state.idData['email'] = idData['email'];
       state.idData['image'] = idData['image'];
@@ -30,6 +32,7 @@ export default {
       state.idTokens['client'] = idTokens['client'];
     },
     updateLocalStorage(state, { idData, idTokens }) {
+      localStorage.setItem('id', idData['id']);
       localStorage.setItem('name', idData['name']);
       localStorage.setItem('email', idData['email']);
       localStorage.setItem('image', idData['image']);
@@ -41,6 +44,7 @@ export default {
   actions: {
     autoLogin({ commit }) {
       const idData = {
+        'id':  localStorage.getItem('id'),
         'name':  localStorage.getItem('name'),
         'email':  localStorage.getItem('email'),
         'image':  localStorage.getItem('image')
@@ -102,6 +106,7 @@ export default {
      })
      .then(() => {
        const idData = {
+         'id': null,
          'name': null,
          'email': null,
          'image': null
@@ -116,6 +121,7 @@ export default {
        localStorage.removeItem('access-token');
        localStorage.removeItem('uid');
        localStorage.removeItem('client');
+       localStorage.removeItem('id');
        localStorage.removeItem('name');
        localStorage.removeItem('email');
        localStorage.removeItem('image');

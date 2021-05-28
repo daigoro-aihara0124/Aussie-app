@@ -13,8 +13,8 @@ export default {
     addPost: (state, post) => (state.postData = [...state.postData, post]),
     // editInfo: (state, id) =>
     // (state.postData = state.postData.filter(post => post.id !== id)),
-    deleteInfo: (state, id) =>
-    (state.postData = state.postData.filter(post => post.id !== id))
+    // deletePost: (state, id) =>
+    // (state.postData = state.postData.filter(post => post.id !== id))
   },
   actions: {
     async fetchPost({ commit }) {
@@ -35,6 +35,9 @@ export default {
       const response = await axios.post('api/v1/posts', post, {
         headers: {
           'content-type': 'multipart/form-data',
+          'access-token':  localStorage.getItem('access-token'),
+          'uid':  localStorage.getItem('uid'),
+          'client':  localStorage.getItem('client')
         }
       })
       commit('addPost', response.data);
@@ -47,9 +50,16 @@ export default {
     //   })
     //   commit('editPost', response.data);
     // },
-    async deleteInfo({ commit }, id) {
-      await axios.delete(`api/v1/posts/${id}`);
-      commit('deletePost', id);
-    }
+    // async deleteInfo({ commit }, id) {
+    //   await axios.delete(`api/v1/posts/${id}`, {
+    //     headers: {
+    //       'content-type': 'multipart/form-data',
+    //       'access-token':  localStorage.getItem('access-token'),
+    //       'uid':  localStorage.getItem('uid'),
+    //       'client':  localStorage.getItem('client')
+    //     }
+    //   });
+    //   commit('deletePost', id);
+    // }
   }
 }
