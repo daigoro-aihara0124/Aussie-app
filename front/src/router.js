@@ -1,16 +1,17 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from './views/Home.vue';
-import SchoolRegister from './views/SchoolRegister.vue';
-import SchoolIndex from './views/SchoolIndex.vue';
-import SchoolDetail from './views/SchoolDetail.vue';
-import SchoolEdit from './views/SchoolEdit.vue';
+import Home from './components/Home.vue';
+import SchoolRegister from './components/Posts/SchoolRegister.vue';
+import SchoolIndex from './components/Posts/SchoolIndex.vue';
+import SchoolDetail from './components/Posts/SchoolDetail.vue';
+import SchoolEdit from './components/Posts/SchoolEdit.vue';
+import Likes from './components/Likes.vue'
 import Reservation from './views/Reservation.vue';
 import MyReserved from './views/MyReserved.vue';
-import Login from './views/Login.vue';
-import Register from './views/Register.vue';
-import Mypage from './views/Mypage.vue';
-import UsersEdit from './views/UsersEdit.vue';
+import Login from './components/Users/Login.vue';
+import Register from './components/Users/Register.vue';
+import Mypage from './components/Users/Mypage.vue';
+import UsersEdit from './components/Users/UsersEdit.vue';
 import store from './store';
 
 Vue.use(VueRouter);
@@ -67,6 +68,17 @@ export default new VueRouter({
           next();
         } else {
           next('/');
+        }
+      }
+    },
+    {
+      path: '/likes',
+      component: Likes,
+      beforeEnter(to, from, next) {
+        if (store.getters.idTokens['access-token']) {
+          next();
+        } else {
+          next('/login');
         }
       }
     },

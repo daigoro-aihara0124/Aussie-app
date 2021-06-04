@@ -7,6 +7,7 @@ class Api::V1::PostsController < Api::V1::ApiController
 
   def show
     post = Post.find(params[:id])
+    like = Like.new
     render json: post, methods: [:image_url]
   end
 
