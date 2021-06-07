@@ -56,7 +56,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      id: this.$route.params.id,
+      postid: this.$route.params.id,
       imageFile: null,
       post: {
         id: '',
@@ -75,11 +75,11 @@ export default {
     }
   },
   mounted: function() {
-    this.setPostEdit(this.id);
+    this.setPostEdit(this.postid);
   },
   methods: {
-    setPostEdit(id){
-      axios.get(`api/v1/posts/${id}`).then(res => {
+    setPostEdit(postid){
+      axios.get(`api/v1/posts/${postid}`).then(res => {
         this.post.image_url = res.data.image_url;
         this.post.id = res.data.id;
         this.post.address = res.data.address;
@@ -94,7 +94,7 @@ export default {
       e.preventDefault();
       this.imageFile = e.target.files[0];
     },
-    async editInfo(id) {
+    async editInfo(postid) {
       let formData = new FormData();
       formData.append("image", this.imageFile);
       formData.append("id", this.post.id);
@@ -104,7 +104,7 @@ export default {
       formData.append("term", this.post.term);
       formData.append("fee", this.post.fee);
       formData.append("user_id", this.post.user_id);
-      await axios.put(`api/v1/posts/${id}`, formData, {
+      await axios.put(`api/v1/posts/${postid}`, formData, {
         headers: {
           'content-type': 'multipart/form-data',
           'access-token':  localStorage.getItem('access-token'),
@@ -118,8 +118,8 @@ export default {
         console.log(error);
       });
     },
-    async del(id) {
-      await axios.delete(`api/v1/posts/${id}`, {
+    async del(postid) {
+      await axios.delete(`api/v1/posts/${postid}`, {
         headers: {
           'content-type': 'multipart/form-data',
           'access-token':  localStorage.getItem('access-token'),

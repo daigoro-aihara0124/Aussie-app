@@ -5,7 +5,7 @@ import SchoolRegister from './components/Posts/SchoolRegister.vue';
 import SchoolIndex from './components/Posts/SchoolIndex.vue';
 import SchoolDetail from './components/Posts/SchoolDetail.vue';
 import SchoolEdit from './components/Posts/SchoolEdit.vue';
-import Likes from './components/Likes.vue'
+// import Likes from './components/Likes.vue'
 import Reservation from './views/Reservation.vue';
 import MyReserved from './views/MyReserved.vue';
 import Login from './components/Users/Login.vue';
@@ -71,17 +71,17 @@ export default new VueRouter({
         }
       }
     },
-    {
-      path: '/likes',
-      component: Likes,
-      beforeEnter(to, from, next) {
-        if (store.getters.idTokens['access-token']) {
-          next();
-        } else {
-          next('/login');
-        }
-      }
-    },
+    // {
+    //   path: '/likes',
+    //   component: Likes,
+    //   beforeEnter(to, from, next) {
+    //     if (store.getters.idTokens['access-token']) {
+    //       next();
+    //     } else {
+    //       next('/login');
+    //     }
+    //   }
+    // },
     {
       path: '/reservation',
       component: Reservation,

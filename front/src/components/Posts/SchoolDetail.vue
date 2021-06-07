@@ -46,7 +46,7 @@
           <br><br>
           <td>{{ post.user_id }}</td>
           <br><br>
-          <td><Likes/></td>
+          <td><likes :postid ="postid" :post ="post" ></likes></td>
           <br><br>
           <td><router-link to="/reservation">予約する</router-link></td>
           <br><br>
@@ -69,7 +69,7 @@ export default {
   },
   data() {
     return {
-      id: this.$route.params.id,
+      postid: this.$route.params.id,//id→postidに変更
       imageFile: null,
       post: {
         id: '',
@@ -88,19 +88,20 @@ export default {
     }
   },
   mounted: function() {
-    this.setPostDetail(this.id);
+    this.setPostDetail(this.postid);
   },
   methods: {
-    setPostDetail(id){
-      axios.get(`api/v1/posts/${id}`).then(res => {
-        this.post.image_url = res.data.image_url;
-        this.post.id = res.data.id;
-        this.post.address = res.data.address;
-        this.post.name = res.data.name;
-        this.post.comment = res.data.comment;
-        this.post.term = res.data.term;
-        this.post.fee = res.data.fee;
-        this.post.user_id = res.data.user_id;
+    setPostDetail(postid){
+      var self = this;
+      axios.get(`api/v1/posts/${postid}`).then(res => {
+        self.post.image_url = res.data.image_url;
+        self.post.id = res.data.id;
+        self.post.address = res.data.address;
+        self.post.name = res.data.name;
+        self.post.comment = res.data.comment;
+        self.post.term = res.data.term;
+        self.post.fee = res.data.fee;
+        self.post.user_id = res.data.user_id;
       });
     },
   }

@@ -13,7 +13,7 @@
   import axios from 'axios'
 
   export default {
-  props: ['userId', 'postId'],
+  props: ['userid', 'postid'],
   data() {
     return {
       likeList: []
@@ -30,23 +30,22 @@
       return Boolean(this.findLikeId())
     }
   },
+  // created: function() {
+  //   this.registerLike().then(result => {
+  //     this.likeList = result
+  //   })
+  // },
   methods: {
-    // rails側のindexアクションにリクエストするメソッド
-    // fetchLikeByPostId: async function() {
-    //   const res = await axios.get(`api/v1/likes/post_id=${this.postId}`)
-    //   if (res.status !== 200) { process.exit() }
-    //   return res.data
-    // },
-    // rails側のcreateアクションにリクエストするメソッド
     registerLike: async function() {
-      const res = await axios.post('api/v1/posts/' + this.post.id +'/likes', {
+      console.log(this.postid);
+      const res = await axios.post('api/v1/likes', { post_id: this.$route.params.id }, {
         headers: {
           'access-token':  localStorage.getItem('access-token'),
           'uid':  localStorage.getItem('uid'),
           'client':  localStorage.getItem('client')
         }
       })
-      if (res.status !== 201) { process.exit() }
+      this.likeList = res.data;
     },
     // rails側のdestroyアクションにリクエストするメソッド
     deleteLike: async function() {
