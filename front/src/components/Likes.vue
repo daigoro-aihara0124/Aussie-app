@@ -11,6 +11,7 @@
 
 <script>
   import axios from 'axios'
+  import store from '../store';
 
   export default {
   props: ['postid', 'post'],
@@ -64,9 +65,9 @@
     },
     // ログインユーザがいいねしているlikeモデルのidを返す
    findLikeId: function() {
-     console.log(this.post.user_id);
+     console.log(store.getters.idData['id']);
      const like = this.likeList.find((like) => {
-       return (like.user_id === this.post.user_id)
+       return (like.user_id == store.getters.idData['id'])
      })
      if (like) { return like.id }
     }
