@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_05_28_140811) do
     t.string "term"
     t.integer "fee"
     t.string "address"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
