@@ -3,13 +3,16 @@ import axios from "axios";
 
 export default {
   state: {
-    postData: []
+    postData: [],
+    post:[]
   },
   getters: {
-    postData: state => state.postData.sort((a, b) => b.id - a.id)
+    postData: state => state.postData.sort((a, b) => b.id - a.id),
+    post: state => state.post
   },
   mutations: {
     updatePostData: (state, postData) => (state.postData = postData),
+    updatePost: (state, post) => (state.post = post),
     addPost: (state, post) => (state.postData = [...state.postData, post]),
     // editInfo: (state, id) =>
     // (state.postData = state.postData.filter(post => post.id !== id)),
@@ -24,13 +27,10 @@ export default {
       })
       .catch(e => console.log(e))
     },
-    // async detailPost(commit, { id }) {
-    //   await axios.get(`api/v1/posts/${id}`)
-    //   .then(response => {
-    //     commit('updatePostData', response.data);
-    //   })
-    //   .catch(e => console.log(e))
-    // },
+    async detailPost({ commit }, postid) {
+      const response = await axios.get(`api/v1/posts/${postid}`)
+      commit('updatePost', response.data);
+    },
     async createInfo({ commit }, post) {
       const response = await axios.post('api/v1/posts', post, {
         headers: {
@@ -41,6 +41,7 @@ export default {
         }
       })
       commit('addPost', response.data);
+      return response.data
     },
     // async editInfo({ commit }, id, post) {
     //   const response = await axios.put(`api/v1/posts/${id}`, post, {

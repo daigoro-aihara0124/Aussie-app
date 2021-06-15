@@ -21,7 +21,9 @@
           <br><br>
           <th>投稿者ID</th>
           <br><br>
-          <th>お気に入り</th>
+          <th>いいね！</th>
+          <br><br>
+          <th>お気に入り数</th>
           <br><br>
           <th>予約</th>
           <template v-if="isAuthenticated">
@@ -48,6 +50,8 @@
           <br><br>
           <td><likes :postid ="postid" :post ="post" ></likes></td>
           <br><br>
+          <td><like-counter :postid ="postid" :post ="post" ></like-counter></td>
+          <br><br>
           <td><router-link to="/reservation">予約する</router-link></td>
           <br><br>
           <template v-if="isAuthenticated">
@@ -60,50 +64,32 @@
 </template>
 
 <script>
-import axios from "axios";
 import Likes from '../../components/Likes.vue'
+import LikeCounter from '../../components/LikeCounter.vue'
+// import LikeList from '../../components/LikeList.vue'
 
 export default {
   components: {
     Likes,
+    LikeCounter,
+    // LikeList,
   },
   data() {
     return {
       postid: this.$route.params.id,//id→postidに変更
-      imageFile: null,
-      post: {
-        id: '',
-        address: '',
-        name: '',
-        comment: '',
-        term: '',
-        fee: '',
-        user_id: '',
-      }
-    };
+      imageFile_url: null,
+    }
   },
   computed: {
     isAuthenticated() {
       return this.$store.getters.idData['id'] == this.post.user_id;
-    }
-  },
-  mounted: function() {
-    this.setPostDetail(this.postid);
-  },
-  methods: {
-    setPostDetail(postid){
-      var self = this;
-      axios.get(`api/v1/posts/${postid}`).then(res => {
-        self.post.image_url = res.data.image_url;
-        self.post.id = res.data.id;
-        self.post.address = res.data.address;
-        self.post.name = res.data.name;
-        self.post.comment = res.data.comment;
-        self.post.term = res.data.term;
-        self.post.fee = res.data.fee;
-        self.post.user_id = res.data.user_id;
-      });
     },
+    post() {
+      return this.$store.getters.post;
+    },
+  },
+  created() {
+    this.$store.dispatch('detailPost', this.postid)
   }
 };
 </script>

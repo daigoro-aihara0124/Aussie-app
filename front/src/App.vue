@@ -3,7 +3,9 @@
     <header>
       <template v-if="isAuthenticated">
         <router-link to="/" class="header-item">ホーム</router-link>
-        <router-link to="/schoolRegister" class="header-item">スクール登録フォーム</router-link>
+        <template v-if="guestAuthenticated">
+          <router-link to="/schoolRegister" class="header-item">スクール登録フォーム</router-link>
+        </template>
         <router-link to="/schoolIndex" class="header-item">スクール一覧</router-link>
         <router-link to="/mypage" class="header-item">マイページ</router-link>
         <span class="header-item" @click="logout">ログアウト</span>
@@ -24,7 +26,10 @@ export default {
   computed: {
     isAuthenticated() {
       return this.$store.getters.idTokens['access-token'] !== null;
-    }
+    },
+    guestAuthenticated() {
+      return this.$store.getters.idData['email'] !== 'guest@example.com';
+    },
   },
   methods: {
     logout: async function() {

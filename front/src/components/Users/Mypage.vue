@@ -10,6 +10,8 @@
       <router-link to="/usersedit" class="header-item">会員情報の編集ページへ</router-link>
     </template>
     <br><br>
+    <router-link to="/myLikes" class="header-item">お気に入りしたスクールページ一覧へ</router-link>
+    <br><br>
     <router-link to="/myReserved" class="header-item">予約済みのスクールページへ</router-link>
   </div>
 </template>
@@ -18,15 +20,15 @@
 import UserImage from '../../components/UserImage.vue';
 
 export default {
-components: {
-  UserImage,
-},
-computed: {
-  isAuthenticated() {
-    return this.$store.getters.idData['email'] !== 'guest@example.com';
+  components: {
+    UserImage,
   },
-  idData() {
-    return this.$store.getters.idData;
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters.idData['email'] !== 'guest@example.com';
+    },
+    idData() {
+      return this.$store.getters.idData;
     }
   }
 };

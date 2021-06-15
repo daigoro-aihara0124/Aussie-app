@@ -1,18 +1,24 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import store from './store';
 import Home from './components/Home.vue';
-import SchoolRegister from './components/Posts/SchoolRegister.vue';
-import SchoolIndex from './components/Posts/SchoolIndex.vue';
-import SchoolDetail from './components/Posts/SchoolDetail.vue';
-import SchoolEdit from './components/Posts/SchoolEdit.vue';
-// import Likes from './components/Likes.vue'
-import Reservation from './views/Reservation.vue';
-import MyReserved from './views/MyReserved.vue';
+//user
 import Login from './components/Users/Login.vue';
 import Register from './components/Users/Register.vue';
 import Mypage from './components/Users/Mypage.vue';
 import UsersEdit from './components/Users/UsersEdit.vue';
-import store from './store';
+//post
+import SchoolRegister from './components/Posts/SchoolRegister.vue';
+import SchoolIndex from './components/Posts/SchoolIndex.vue';
+import SchoolDetail from './components/Posts/SchoolDetail.vue';
+import SchoolEdit from './components/Posts/SchoolEdit.vue';
+//like
+import MyLikes from './components/MyLikes.vue';
+import LikeList from './components/LikeList.vue';
+import Reservation from './views/Reservation.vue';
+import MyReserved from './views/MyReserved.vue';
+
+
 
 Vue.use(VueRouter);
 
@@ -27,7 +33,7 @@ export default new VueRouter({
       path: '/schoolRegister',
       component: SchoolRegister,
       beforeEnter(to, from, next) {
-        if (store.getters.idTokens['access-token']) {
+        if (store.getters.idTokens['access-token'] && store.getters.idData['email'] !== 'guest@example.com') {
           next();
         } else {
           next('/login');
@@ -71,17 +77,28 @@ export default new VueRouter({
         }
       }
     },
-    // {
-    //   path: '/likes',
-    //   component: Likes,
-    //   beforeEnter(to, from, next) {
-    //     if (store.getters.idTokens['access-token']) {
-    //       next();
-    //     } else {
-    //       next('/login');
-    //     }
-    //   }
-    // },
+    {
+      path: '/likeList',
+      component: LikeList,
+      beforeEnter(to, from, next) {
+        if (store.getters.idTokens['access-token']) {
+          next();
+        } else {
+          next('/login');
+        }
+      }
+    },
+    {
+      path: '/myLikes',
+      component: MyLikes,
+      beforeEnter(to, from, next) {
+        if (store.getters.idTokens['access-token']) {
+          next();
+        } else {
+          next('/login');
+        }
+      }
+    },
     {
       path: '/reservation',
       component: Reservation,

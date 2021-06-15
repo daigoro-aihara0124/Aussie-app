@@ -15,10 +15,10 @@
           <br><br>
           <th>スクール紹介</th>
           <br><br>
+          <!-- <th>お気に入り数</th> -->
+          <br><br>
           <th>スクール詳細</th>
           <br><br>
-          <!-- <th>いいね!</th>
-          <br><br> -->
         </tr>
         <tr v-for="post in postData" :key="post.id">
           <td><img :src="post.image_url" class="post_image" /></td>
@@ -31,11 +31,9 @@
           <br><br>
           <td>{{ post.comment }}</td>
           <br><br>
-          <td><router-link :to="{ name: 'SchoolDetail', params: { id: post.id } }">詳細ページに行く</router-link></td>
+          <!-- <td><likes :postid ="post-id" :post ="post" ></likes></td> -->
           <br><br>
-          <!-- <td>
-            <p>いいね数:{{ count }}</p>
-          </td> -->
+          <td><router-link :to="{ name: 'SchoolDetail', params: { id: post.id } }">詳細ページに行く</router-link></td>
           <br><br>
         </tr>
       </tbody>
@@ -44,22 +42,26 @@
 </template>
 
 <script>
-// import Likes from '../views/Likes.vue';
+// import Likes from '../../components/Likes.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   // components: {
   //   Likes,
   // },
+  // data() {
+  //   return {
+  //     likeList: []
+  //   }
+  // },
   created() {
     this.$store.dispatch('fetchPost')
   },
   computed: {
-    postData() {
-      return this.$store.getters.postData;
-    },
-    idData() {
-      return this.$store.getters.idData;
-    }
+    ...mapGetters(['postData']),
+    // count() {
+    //   return this.likeList.length
+    // },
   },
 };
 </script>
