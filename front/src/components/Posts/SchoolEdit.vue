@@ -51,45 +51,27 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   data() {
     return {
       postid: this.$route.params.id,
       imageFile: null,
-      post: {
-        id: '',
-        address: '',
-        name: '',
-        comment: '',
-        term: '',
-        fee: '',
-        user_id: '',
-      }
     };
   },
   computed: {
     isAuthenticated() {
       return this.$store.getters.idData['id'] == this.post.user_id;
-    }
+    },
+    post() {
+      return this.$store.getters.post;
+    },
   },
-  mounted: function() {
-    this.setPostEdit(this.postid);
+  created() {
+    this.$store.dispatch('detailPost', this.postid)
   },
   methods: {
-    setPostEdit(postid){
-      axios.get(`api/v1/posts/${postid}`).then(res => {
-        this.post.image_url = res.data.image_url;
-        this.post.id = res.data.id;
-        this.post.address = res.data.address;
-        this.post.name = res.data.name;
-        this.post.comment = res.data.comment;
-        this.post.term = res.data.term;
-        this.post.fee = res.data.fee;
-        this.post.user_id = res.data.user_id
-      });
-    },
     setImage(e) {
       e.preventDefault();
       this.imageFile = e.target.files[0];
@@ -104,39 +86,16 @@ export default {
       formData.append("term", this.post.term);
       formData.append("fee", this.post.fee);
       formData.append("user_id", this.post.user_id);
-      await axios.put(`api/v1/posts/${postid}`, formData, {
-        headers: {
-          'content-type': 'multipart/form-data',
-          'access-token':  localStorage.getItem('access-token'),
-          'uid':  localStorage.getItem('uid'),
-          'client':  localStorage.getItem('client')
-        }
-      })
-      .then(() => {
-        this.$router.push('/schoolIndex');
-      }, (error) => {
-        console.log(error);
-      });
+      await this.$store.dispatch('editInfo', { postid, formData });
+      this.$router.push('/schoolIndex');
     },
-    async del(postid) {
-      await axios.delete(`api/v1/posts/${postid}`, {
-        headers: {
-          'content-type': 'multipart/form-data',
-          'access-token':  localStorage.getItem('access-token'),
-          'uid':  localStorage.getItem('uid'),
-          'client':  localStorage.getItem('client')
-        }
-      })
-      .then(() => {
-        this.$router.push('/schoolIndex');
-      }, (error) => {
-        console.log(error);
-      });
+    del(postid) { // 追加
+      this.$store.dispatch('deleteInfo', postid)
+      this.$router.push('/schoolIndex');
     }
   }
-};
+}
 </script>
-
 
 <style scoped>
 li {
