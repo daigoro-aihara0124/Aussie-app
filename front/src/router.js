@@ -13,10 +13,12 @@ import SchoolIndex from './components/Posts/SchoolIndex.vue';
 import SchoolDetail from './components/Posts/SchoolDetail.vue';
 import SchoolEdit from './components/Posts/SchoolEdit.vue';
 //like
-import MyLikes from './components/MyLikes.vue';
-import LikeList from './components/LikeList.vue';
-import Reservation from './views/Reservation.vue';
-import MyReserved from './views/MyReserved.vue';
+import MyLikes from './components/Likes/MyLikes.vue';
+// import LikeList from './components/Likes/LikeList.vue';
+
+//reserve
+import Reservation from './components/reserves/Reservation.vue';
+import MyReserved from './components/reserves/MyReserved.vue';
 
 
 
@@ -77,17 +79,17 @@ export default new VueRouter({
         }
       }
     },
-    {
-      path: '/likeList',
-      component: LikeList,
-      beforeEnter(to, from, next) {
-        if (store.getters.idTokens['access-token']) {
-          next();
-        } else {
-          next('/login');
-        }
-      }
-    },
+    // {
+    //   path: '/likeList',
+    //   component: LikeList,
+    //   beforeEnter(to, from, next) {
+    //     if (store.getters.idTokens['access-token']) {
+    //       next();
+    //     } else {
+    //       next('/login');
+    //     }
+    //   }
+    // },
     {
       path: '/myLikes',
       component: MyLikes,
@@ -100,7 +102,7 @@ export default new VueRouter({
       }
     },
     {
-      path: '/reservation',
+      path: '/reserves/:id/',
       component: Reservation,
       beforeEnter(to, from, next) {
         if (store.getters.idTokens['access-token']) {
