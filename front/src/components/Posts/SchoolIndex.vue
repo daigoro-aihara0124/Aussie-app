@@ -7,7 +7,7 @@
         <tr>
           <th>画像</th>
           <br><br>
-          <th>ID</th>
+          <th>スクールID</th>
           <br><br>
           <th>場所</th>
           <br><br>

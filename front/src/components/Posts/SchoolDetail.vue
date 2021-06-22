@@ -7,7 +7,7 @@
         <tr>
           <th>画像</th>
           <br><br>
-          <th>ID</th>
+          <th>スクールID</th>
           <br><br>
           <th>場所</th>
           <br><br>
@@ -52,7 +52,7 @@
           <br><br>
           <td><like-counter :postid ="postid" :post ="post" ></like-counter></td>
           <br><br>
-          <td><router-link to="/reservation">予約する</router-link></td>
+          <td><router-link :to="{ path: `/reserves/${post.id}` }">予約する</router-link></td>
           <br><br>
           <template v-if="isAuthenticated">
             <td><router-link :to="{ path: `/posts/${post.id}/edit` }">編集ページ</router-link></td>
@@ -64,8 +64,8 @@
 </template>
 
 <script>
-import Likes from '../../components/Likes.vue'
-import LikeCounter from '../../components/LikeCounter.vue'
+import Likes from '../../components/Likes/Likes.vue'
+import LikeCounter from '../../components/Likes/LikeCounter.vue'
 // import LikeList from '../../components/LikeList.vue'
 
 export default {
