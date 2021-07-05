@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2>お気に入りしている投稿ID一覧</h2>
+    <h2>お気に入りしているスクールID一覧</h2>
       <tr>
-        <th>ID(リンク)</th>
+        <th>スクールID(リンク)</th>
         <br><br>
       </tr>
       <tr v-for="like in likeList" :key="like.id">

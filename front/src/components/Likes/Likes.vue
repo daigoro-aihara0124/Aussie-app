@@ -1,32 +1,29 @@
 <template>
   <div>
-    <button v-if="isLiked" @click="deleteLike()">
-      いいねを取り消す
-    </button>
-    <button v-else @click="registerLike()">
-      いいねする
-    </button>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+      <i v-if="isLiked" @click="deleteLike()" class="far fa-heart unlike-btn">
+        <span>{{ count }}</span>
+      </i>
+      <i v-else @click="registerLike()" class="far fa-heart like-btn">
+        <span>{{ count }}</span>
+      </i>
   </div>
 </template>
 
 <script>
   import axios from 'axios'
-  // import store from '../store';
 
   export default {
   props: ['postid', 'post'],
   data() {
     return {
-      likeList: []
+      likeList: [],
     }
   },
   computed: {
     // いいね数を返す
     count() {
       return this.likeList.length
-    },
-    like() {
-      return this.$store.getters.like;
     },
     // ログインユーザが既にいいねしているかを判定する
     isLiked() {
@@ -40,7 +37,9 @@
     })
   },
   // created() {
-  //   this.$store.dispatch('createdLike')
+  //   this.$store.dispatch('createdLike').then(result => {
+  //     this.likeList = result
+  //   })
   // },
   methods: {
     async createdLike() {
@@ -48,39 +47,38 @@
       if (res.status !== 200) { process.exit() }
       return res.data
     },
-    async registerLike() {
-      await this.$store.dispatch('registerLike', { post_id: this.$route.params.id }, {
-        likeList: this.likeList
-      });
-    },
-    // registerLike: async function() {
-    //   console.log(this.postid);
-    //     const res = await axios.post('api/v1/likes', { post_id: this.$route.params.id }, {
-    //     headers: {
-    //       'access-token':  localStorage.getItem('access-token'),
-    //       'uid':  localStorage.getItem('uid'),
-    //       'client':  localStorage.getItem('client')
-    //     }
-    //   })
-     //  if (res.status !== 201) { process.exit() }
-     //  this.createdLike().then(result => {
-     //   this.likeList = result
-     // })
+    // async registerLike() {
+    //   await this.$store.dispatch('registerLike', {
+    //     likeList: this.likeList,
+    //     post_id: this.post_id
+    //   });
     // },
+    registerLike: async function() {
+        const res = await axios.post('api/v1/likes', { post_id: this.$route.params.id }, {
+        headers: {
+          'access-token':  localStorage.getItem('access-token'),
+          'uid':  localStorage.getItem('uid'),
+          'client':  localStorage.getItem('client')
+        }
+      })
+      if (res.status !== 201) { process.exit() }
+      this.createdLike().then(result => {
+       this.likeList = result
+     })
+    },
     // rails側のdestroyアクションにリクエストするメソッド
-    async deleteLike() {
-      const likeid = this.findLikeId()
-      await this.$store.dispatch('deleteLike', likeid)
-    },
-    // deleteLike: async function() {
-    //   const likeId = this.findLikeId()
-    //   const res = await axios.delete(`api/v1/likes/${likeId}`)
-    //   if (res.status !== 200) { process.exit() }
-    //   this.likeList = this.likeList.filter(n => n.id !== likeId)
+    // async deleteLike() {
+    //   const likeid = this.findLikeId()
+    //   await this.$store.dispatch('deleteLike', likeid)
     // },
+    deleteLike: async function() {
+      const likeId = this.findLikeId()
+      const res = await axios.delete(`api/v1/likes/${likeId}`)
+      if (res.status !== 200) { process.exit() }
+      this.likeList = this.likeList.filter(n => n.id !== likeId)
+    },
     // ログインユーザがいいねしているlikeモデルのidを返す
    findLikeId: function() {
-     console.log(this.like.id);
      const like = this.likeList.find((like) => {
        return (like.user_id == this.$store.getters.idData['id'])
      })
@@ -89,3 +87,31 @@
   }
 }
 </script>
+
+<style scoped>
+
+span {
+  margin-left: 10px;
+}
+
+.like-btn {
+width: 25px;
+height: 20px;
+font-size: 20px;
+color: #808080;
+margin-left: 0px;
+margin-right: 20px;
+cursor: pointer;
+}
+
+.unlike-btn {
+width: 25px;
+height: 20px;
+font-size: 20px;
+color: #e54747;
+margin-left: 0px;
+margin-right: 20px;
+cursor: pointer;
+}
+
+</style>
