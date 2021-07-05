@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>学校詳細</h2>
+    <h2>スクール詳細</h2>
     <br><br>
     <table>
       <tbody>
@@ -17,13 +17,11 @@
           <br><br>
           <th>期間</th>
           <br><br>
-          <th>料金</th>
+          <th>料金(1日)</th>
           <br><br>
           <th>投稿者ID</th>
           <br><br>
-          <th>いいね！</th>
-          <br><br>
-          <th>お気に入り数</th>
+          <th>お気に入り</th>
           <br><br>
           <th>予約</th>
           <template v-if="isAuthenticated">
@@ -50,9 +48,12 @@
           <br><br>
           <td><likes :postid ="postid" :post ="post" ></likes></td>
           <br><br>
-          <td><like-counter :postid ="postid" :post ="post" ></like-counter></td>
-          <br><br>
-          <td><router-link :to="{ path: `/reserves/${post.id}` }">予約する</router-link></td>
+          <!-- <td><like-counter :postid ="postid" :post ="post" ></like-counter></td>
+          <br><br> -->
+          <!-- <template v-if="reserveAuthenticated"> -->
+          <td v-if="reserveAuthenticated"><router-link :to="{ path: `/reserves/${post.id}` }">予約する</router-link></td>
+          <td v-else>既に予約済みです</td>
+          <!-- </template> -->
           <br><br>
           <template v-if="isAuthenticated">
             <td><router-link :to="{ path: `/posts/${post.id}/edit` }">編集ページ</router-link></td>
@@ -65,14 +66,10 @@
 
 <script>
 import Likes from '../../components/Likes/Likes.vue'
-import LikeCounter from '../../components/Likes/LikeCounter.vue'
-// import LikeList from '../../components/LikeList.vue'
 
 export default {
   components: {
     Likes,
-    LikeCounter,
-    // LikeList,
   },
   data() {
     return {
@@ -84,12 +81,24 @@ export default {
     isAuthenticated() {
       return this.$store.getters.idData['id'] == this.post.user_id;
     },
+    reserveAuthenticated() {
+      return this.$store.getters.idData['id'] !== this.$store.getters.reserve['user_id']
+    },
     post() {
       return this.$store.getters.post;
     },
+    reserveDate() {
+      return this.$store.getters.reserveDate;
+    },
+    reserve() {
+      return this.$store.getters.reserve;
+    },
+    idData() {
+      return this.$store.getters.idData;
+    },
   },
   created() {
-    this.$store.dispatch('detailPost', this.postid)
+    this.$store.dispatch('detailPost', this.postid);
   }
 };
 </script>

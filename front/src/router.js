@@ -14,11 +14,11 @@ import SchoolDetail from './components/Posts/SchoolDetail.vue';
 import SchoolEdit from './components/Posts/SchoolEdit.vue';
 //like
 import MyLikes from './components/Likes/MyLikes.vue';
-// import LikeList from './components/Likes/LikeList.vue';
 
 //reserve
-import Reservation from './components/reserves/Reservation.vue';
-import MyReserved from './components/reserves/MyReserved.vue';
+import Reservation from './components/Reserves/Reservation.vue';
+import ReservedList from './components/Reserves/ReservedList.vue';
+import MyReserved from './components/Reserves/MyReserved.vue';
 
 
 
@@ -35,7 +35,7 @@ export default new VueRouter({
       path: '/schoolRegister',
       component: SchoolRegister,
       beforeEnter(to, from, next) {
-        if (store.getters.idTokens['access-token'] && store.getters.idData['email'] !== 'guest@example.com') {
+        if (store.getters.idTokens['access-token']) {
           next();
         } else {
           next('/login');
@@ -113,13 +113,24 @@ export default new VueRouter({
       }
     },
     {
-      path: '/myReserved',
-      component: MyReserved,
+      path: '/reservedList',
+      component: ReservedList,
       beforeEnter(to, from, next) {
         if (store.getters.idTokens['access-token']) {
           next();
         } else {
           next('/login');
+        }
+      }
+    },
+    {
+      path: '/reserves/:id/show/',
+      component: MyReserved,
+      beforeEnter(to, from, next) {
+        if (store.getters.idTokens['access-token']) {
+          next();
+        } else {
+          next('/');
         }
       }
     },
