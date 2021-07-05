@@ -1,5 +1,6 @@
 <template>
   <div>
+    <br>
     <UserImage :image="idData.image" />
     <template v-if="isAuthenticated">
     <h3>ID: {{ idData.id }}</h3>
@@ -11,8 +12,6 @@
     </template>
     <br><br>
     <router-link to="/myLikes" class="header-item">お気に入りしたスクールページ一覧へ</router-link>
-    <br><br>
-    <router-link to="/myReserved" class="header-item">予約済みのスクールページへ</router-link>
   </div>
 </template>
 
@@ -20,6 +19,7 @@
 import UserImage from '../../components/UserImage.vue';
 
 export default {
+
   components: {
     UserImage,
   },
@@ -29,6 +29,12 @@ export default {
     },
     idData() {
       return this.$store.getters.idData;
+    },
+    reserve() {
+      return this.$store.getters.reserve;
+    },
+    reserveDate() {
+      return this.$store.getters.reserveDate;
     }
   }
 };

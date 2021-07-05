@@ -1,26 +1,31 @@
 <template>
   <div>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <h3>ログイン</h3>
-    <label for="email">Email：</label>
-    <input
-      id="email"
-      type="email"
-      v-model="email"
-    >
-    <br><br>
-    <label for="name">パスワード：</label>
-      <input
-      :type="inputType"
-      id="password"
-      class="input"
-      v-model="password"
-      >
-      <span class="input-icon">
-        <span :class="iconType" @click="onClick"></span>
-      </span>
-    <br><br>
-    <button @click="login">送信</button>
+    <div class="form-wrapper">
+      <h1 class="title">Sign In</h1>
+        <div class="cp_iptxt">
+          <input
+            id="email"
+            type="text"
+            v-model="email"
+            placeholder="email"
+          >
+        </div>
+        <div class="cp_iptxt">
+            <input
+            :type="inputType"
+            id="password"
+            v-model="password"
+            placeholder="password"
+            >
+            <span class="input-icon">
+              <span :class="iconType" @click="onClick"></span>
+            </span>
+        </div>
+        <div class="button-panel">
+          <button class="button"  @click="login">送信</button>
+        </div>
+    </div>
   </div>
 </template>
 

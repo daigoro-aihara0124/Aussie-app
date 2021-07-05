@@ -1,33 +1,40 @@
 <template>
   <div>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <h3>登録</h3>
-    <label for="name">名前：</label>
-    <input
-      id="name"
-      type="text"
-      v-model="name"
-    >
-    <br><br>
-    <label for="email">Email：</label>
-    <input
-      id="email"
-      type="email"
-      v-model="email"
-    >
-    <br><br>
-    <label for="name">パスワード：</label>
-      <input
-      :type="inputType"
-      id="password"
-      class="input"
-      v-model="password"
-      >
-      <span class="input-icon">
-        <span :class="iconType" @click="onClick"></span>
-      </span>
-    <br><br>
-    <button @click="register">送信</button>
+    <div class="form-wrapper">
+      <h1 class="title">Sign Up</h1>
+      <div class="cp_iptxt">
+        <input
+          id="name"
+          type="text"
+          v-model="name"
+          placeholder="name"
+        >
+      </div>
+      <div class="cp_iptxt">
+        <input
+          id="email"
+          type="email"
+          v-model="email"
+          placeholder="email"
+        >
+      </div>
+      <div class="cp_iptxt">
+        <input
+        :type="inputType"
+        id="password"
+        class="input"
+        v-model="password"
+        placeholder="password"
+        >
+        <span class="input-icon">
+          <span :class="iconType" @click="onClick"></span>
+        </span>
+      </div>
+      <div class="button-panel">
+        <button class="button" @click="register">送信</button>
+      </div>
+    </div>
   </div>
 </template>
 
