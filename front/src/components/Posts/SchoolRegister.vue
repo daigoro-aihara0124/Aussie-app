@@ -35,13 +35,16 @@
       v-model="post.term"
     >
     <br><br>
-    <label for="fee">料金：</label>
+    <label for="fee">料金(1日)：</label>
     <input
       id="fee"
       v-model="post.fee"
     >
     <br><br>
-    <button @click="createInfo">内容を登録する</button>
+    <template v-if="isAuthenticated">
+      <button @click="createInfo">内容を登録する</button>
+    </template>
+    <h3 v-else>ゲストユーザーは登録できません。</h3>
   </div>
 </template>
 
@@ -59,6 +62,11 @@ export default {
         fee: ''
       }
     };
+  },
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters.idData['email'] !== 'guest@example.com';
+    }
   },
   methods: {
     setImage(e) {

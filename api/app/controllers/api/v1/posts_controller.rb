@@ -37,10 +37,6 @@ class Api::V1::PostsController < Api::V1::ApiController
 
   private
 
-    def set_post
-
-    end
-
     def post_params
       params.permit(:name, :comment, :term, :fee, :address, :image).merge(user_id: current_api_v1_user.id)
     end

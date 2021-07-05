@@ -37,7 +37,7 @@
           v-model="post.term"
         >
         <br><br>
-        <label for="fee">料金：</label>
+        <label for="fee">料金(1日)：</label>
         <input
           id="fee"
           v-model="post.fee"
