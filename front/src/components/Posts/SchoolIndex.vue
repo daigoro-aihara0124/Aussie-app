@@ -1,43 +1,26 @@
 <template>
-  <div>
-    <h2>学校一覧</h2>
-    <br><br>
-    <table>
-      <tbody>
-        <tr>
-          <th>画像</th>
-          <br><br>
-          <th>スクールID</th>
-          <br><br>
-          <th>場所</th>
-          <br><br>
-          <th>スクール名</th>
-          <br><br>
-          <th>スクール紹介</th>
-          <br><br>
-          <!-- <th>お気に入り数</th> -->
-          <br><br>
-          <th>スクール詳細</th>
-          <br><br>
-        </tr>
-        <tr v-for="post in postData" :key="post.id">
-          <td><img :src="post.image_url" class="post_image" /></td>
-          <br><br>
-          <td>{{ post.id }}</td>
-          <br><br>
-          <td>{{ post.address }}</td>
-          <br><br>
-          <td>{{ post.name }}</td>
-          <br><br>
-          <td>{{ post.comment }}</td>
-          <br><br>
-          <!-- <td><likes :postid ="post-id" :post ="post" ></likes></td> -->
-          <br><br>
-          <td><router-link :to="{ name: 'SchoolDetail', params: { id: post.id } }">詳細ページに行く</router-link></td>
-          <br><br>
-        </tr>
-      </tbody>
-    </table>
+  <div class="list-wrapper">
+    <div class="menu-name">
+      <h2>スクール一覧</h2>
+    </div>
+      <ul v-for="post in postData" :key="post.id">
+        <li>
+          <h3 class="edit-name">City</h3>
+          <div class="school-name">
+            {{ post.address }}
+          </div>
+          <h3 class="edit-name">School name</h3>
+          <div class="school-name">
+            {{ post.name }}
+          </div>
+          <div class="image-position">
+            <img :src="post.image_url" class="post_image" />
+          </div>
+          <div class="detail-link">
+            <router-link :to="{ name: 'SchoolDetail', params: { id: post.id } }">詳細ページに行く</router-link>
+          </div>
+        </li>
+      </ul>
   </div>
 </template>
 
@@ -73,6 +56,34 @@ export default {
     margin: 17px;
     border-radius: 10px;
     border: 1px solid gray;
+
   }
 
+  .list-wrapper {
+    background: #fafafa;
+    margin: 3em auto;
+    padding: 0 1em;
+    max-width: 800px;
+  }
+
+
+  ul li{
+    list-style:none;
+  }
+
+  li {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin: 3em auto;
+    padding: 0 1em;
+  }
+
+  .image-position {
+    text-align: left;
+  }
+
+  .detail-link {
+    text-align: right;
+
+  }
 </style>

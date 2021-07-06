@@ -1,48 +1,58 @@
 <template>
-  <div>
-    <h3>学校を登録する</h3>
-    <label for="image">画像: </label>
-    <input
-      type="file"
-      id="image"
-      name="image"
-      accept="image/*"
-      @change="setImage"
-    >
-    <br><br>
-    <label for="address">場所：</label>
-    <input
-      id="address"
-      v-model="post.address"
-    >
-    <br><br>
-    <label for="name">スクール名：</label>
-    <input
-      id="name"
-      type="text"
-      v-model="post.name"
-    >
-    <br><br>
-    <label for="comment">スクール紹介：</label>
-    <textarea
-      id="comment"
-      v-model="post.comment"
-    ></textarea>
-    <br><br>
-    <label for="term">期間：</label>
-    <input
-      id="term"
-      v-model="post.term"
-    >
-    <br><br>
-    <label for="fee">料金(1日)：</label>
-    <input
-      id="fee"
-      v-model="post.fee"
-    >
-    <br><br>
+  <div class="form-wrapper">
+    <div class="menu-name">
+      <h2>School registration</h2>
+    </div>
+    <div class="cp_iptxt">
+      <h3 class="edit-name">Photo</h3>
+      <input
+        type="file"
+        id="image"
+        name="image"
+        accept="image/*"
+        @change="setImage"
+      >
+    </div>
+    <div class="cp_iptxt">
+      <input
+        id="address"
+        v-model="post.address"
+        placeholder="Address"
+      >
+    </div>
+    <div class="cp_iptxt">
+      <input
+        id="name"
+        type="text"
+        v-model="post.name"
+        placeholder="School name"
+      >
+    </div>
+    <div class="cp_iptxt">
+      <textarea
+        id="comment"
+        v-model="post.comment"
+        placeholder="School introduction"
+      ></textarea>
+    </div>
+    <div class="cp_iptxt">
+      <input
+        id="term"
+        v-model="post.term"
+        placeholder="Term(1 to 24 weeks)"
+      >
+    </div>
+    <div class="cp_iptxt">
+      <input
+        id="fee"
+        v-model="post.fee"
+        placeholder="fee(Per day)"
+      >
+    </div>
     <template v-if="isAuthenticated">
-      <button @click="createInfo">内容を登録する</button>
+      <div class="button-panel">
+        <button class="button" @click="createInfo">内容を登録する</button>
+      </div>
     </template>
     <h3 v-else>ゲストユーザーは登録できません。</h3>
   </div>

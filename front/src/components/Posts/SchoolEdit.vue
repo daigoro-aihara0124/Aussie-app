@@ -1,9 +1,11 @@
 <template>
-  <div>
+  <div class="form-wrapper">
     <template v-if="isAuthenticated">
-      <h3>こちらは、あなた(ID: {{ post.user_id }})の編集ページです。</h3>
-        <br><br>
-        <label for="image">画像：</label>
+      <div class="menu-name">
+        <h3>{{ post.name }}の編集</h3>
+      </div>
+      <div class="cp_iptxt">
+        <h3 class="edit-name">Photo</h3>
         <input
         type="file"
         id="image"
@@ -11,41 +13,49 @@
         accept="image/*"
         @change="setImage"
         >
-        <br><br>
-        <label for="address">場所：</label>
+      </div>
+      <div class="cp_iptxt">
+        <h3 class="edit-name">Address</h3>
         <input
           id="address"
           v-model="post.address"
         >
-        <br><br>
-        <label for="name">スクール名：</label>
+      </div>
+      <div class="cp_iptxt">
+        <h3 class="edit-name">School name</h3>
         <input
           id="name"
           type="text"
           v-model="post.name"
         >
-        <br><br>
-        <label for="comment">スクール紹介：</label>
+      </div>
+      <div class="cp_iptxt">
+        <h3 class="edit-name">School introduction</h3>
         <textarea
           id="comment"
           v-model="post.comment"
         ></textarea>
-        <br><br>
-        <label for="term">期間：</label>
+      </div>
+      <div class="cp_iptxt">
+        <h3 class="edit-name">Term</h3>
         <input
           id="term"
           v-model="post.term"
         >
-        <br><br>
-        <label for="fee">料金(1日)：</label>
+      </div>
+      <div class="cp_iptxt">
+        <h3 class="edit-name">Fee</h3>
         <input
           id="fee"
           v-model="post.fee"
         >
-        <br><br>
-          <button @click="editInfo(post.id)">内容を編集する</button>
-        <br><br>
-          <button @click="del(post.id)">内容を削除する</button>
+      </div>
+      <div class="button-panel">
+        <button class="button" @click="editInfo(post.id)">内容を編集する</button>
+      </div>
+      <div class="button-panel">
+        <button class="button" @click="del(post.id)">内容を削除する</button>
+      </div>
     </template>
   </div>
 </template>
@@ -66,6 +76,9 @@ export default {
     },
     post() {
       return this.$store.getters.post;
+    },
+    idData() {
+      return this.$store.getters.idData;
     },
   },
   created() {
