@@ -1,11 +1,11 @@
 <template>
-  <div class="form-wrapper">
+  <div class="form_wrapper">
     <template v-if="isAuthenticated">
-      <div class="menu-name">
+      <div class="menu_name">
         <h3>{{ post.name }}の編集</h3>
       </div>
       <div class="cp_iptxt">
-        <h3 class="edit-name">Photo</h3>
+        <h3 class="edit_name">Photo</h3>
         <input
         type="file"
         id="image"
@@ -15,14 +15,14 @@
         >
       </div>
       <div class="cp_iptxt">
-        <h3 class="edit-name">Address</h3>
+        <h3 class="edit_name">Address</h3>
         <input
           id="address"
           v-model="post.address"
         >
       </div>
       <div class="cp_iptxt">
-        <h3 class="edit-name">School name</h3>
+        <h3 class="edit_name">School name</h3>
         <input
           id="name"
           type="text"
@@ -30,30 +30,30 @@
         >
       </div>
       <div class="cp_iptxt">
-        <h3 class="edit-name">School introduction</h3>
+        <h3 class="edit_name">School introduction</h3>
         <textarea
           id="comment"
           v-model="post.comment"
         ></textarea>
       </div>
       <div class="cp_iptxt">
-        <h3 class="edit-name">Term</h3>
+        <h3 class="edit_name">Term</h3>
         <input
           id="term"
           v-model="post.term"
         >
       </div>
       <div class="cp_iptxt">
-        <h3 class="edit-name">Fee</h3>
+        <h3 class="edit_name">Fee</h3>
         <input
           id="fee"
           v-model="post.fee"
         >
       </div>
-      <div class="button-panel">
+      <div class="button_panel">
         <button class="button" @click="editInfo(post.id)">内容を編集する</button>
       </div>
-      <div class="button-panel">
+      <div class="button_panel">
         <button class="button" @click="del(post.id)">内容を削除する</button>
       </div>
     </template>
@@ -111,9 +111,6 @@ export default {
 </script>
 
 <style scoped>
-li {
-  list-style:none;
-}
 
 .text_top {
    vertical-align: top;

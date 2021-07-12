@@ -1,5 +1,5 @@
 <template>
-  <img :src="imageUrl" alt="no_image"  class="user__image">
+  <img :src="imageUrl" alt="no_image"  class="user_image">
 </template>
 
 <script>

@@ -1,24 +1,28 @@
 <template>
-  <div>
-    <h3>こちらは、{{ idData.name }}さんの編集ページです。</h3>
-    <label for="name">名前：</label>
-    <input
-      id="name"
-      type="text"
-      v-model="name"
-    >
-    <br><br>
-    <label for="email">Email：</label>
-    <input
-      id="email"
-      type="email"
-      v-model="email"
-    >
-    <br><br>
-    <li class="image__field">
-      <label for="user_image" class="text__top">プロフィール画像：</label>
+  <div class="profile_wrapper">
+    <div class="menu_name">
+      <h2>User edit</h2>
+    </div>
+    <div class="cp_iptxt">
+      <h3 class="edit_name">Name</h3>
+      <input
+        id="name"
+        type="text"
+        v-model="name"
+      >
+    </div>
+    <div class="cp_iptxt">
+      <h3 class="edit_name">Email</h3>
+      <input
+        id="email"
+        type="email"
+        v-model="email"
+      >
+    </div>
+    <div class="cp_iptxt">
+      <h3 class="edit_name">Photo</h3>
       <label for="user_image">
-        <img v-if="imageUrl" :src="imageUrl" class="user__image">
+        <img v-if="imageUrl" :src="imageUrl" class="user_image">
         <UserImage v-else :image="idData.image" />
       </label>
       <input
@@ -30,10 +34,14 @@
         name="user[image]"
         class="hidden"
       >
-     <button @click="deleteImage">削除する</button>
-    </li>
-    <br><br>
-    <button @click="updateIdData">編集する</button>
+     <button class="delete_bottun" @click="deleteImage">削除する</button>
+    </div>
+    <template v-if="isAuthenticated">
+      <div class="button_panel">
+        <button class="button" @click="updateIdData">編集する</button>
+      </div>
+    </template>
+    <h3 v-else>ゲストユーザーは編集できません！</h3>
   </div>
 </template>
 
@@ -52,6 +60,9 @@ export default {
     };
   },
   computed: {
+    isAuthenticated() {
+      return this.$store.getters.idData['email'] !== 'guest@example.com';
+    },
     idData() {
       return this.$store.getters.idData;
     }
@@ -88,21 +99,32 @@ export default {
 </script>
 
 <style scoped>
-.text__top {
+.text_top {
    vertical-align: top;
- }
+}
 
-.image__field{
+.user_image{
+  cursor: pointer;
+}
+
+.image_field{
     padding-left: 20px;
     list-style:none;
+}
 
-  }
-  .user__image {
-    height: 150px;
-    width: 150px;
-    border-radius: 10px;
-    border: 1px solid gray;
-    cursor: pointer;
-  }
+.profile_wrapper {
+  background: #fafafa;
+  margin: 3em auto;
+  padding: 1em 1em;
+  max-width: 500px;
+}
 
+
+.edit_name {
+  text-align:left;
+}
+
+.delete_bottun {
+  cursor: pointer;
+}
 </style>

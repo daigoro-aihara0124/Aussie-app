@@ -1,23 +1,23 @@
 <template>
-  <div class="list-wrapper">
-    <div class="menu-name">
-      <h2>スクール一覧</h2>
+  <div class="list_wrapper">
+    <div class="menu_name">
+      <h2>School list</h2>
     </div>
-      <ul v-for="post in postData" :key="post.id">
-        <li>
-          <h3 class="edit-name">City</h3>
-          <div class="school-name">
+      <ul>
+        <li v-for="post in postData" :key="post.id">
+          <h3 class="edit_name">City</h3>
+          <div class="school_name">
             {{ post.address }}
           </div>
-          <h3 class="edit-name">School name</h3>
-          <div class="school-name">
-            {{ post.name }}
+          <h3 class="edit_name">School name</h3>
+          <div class="school_name">
+            No.{{ post.id }}<br>{{ post.name }}
           </div>
-          <div class="image-position">
+          <div class="image_position">
             <img :src="post.image_url" class="post_image" />
           </div>
-          <div class="detail-link">
-            <router-link :to="{ name: 'SchoolDetail', params: { id: post.id } }">詳細ページに行く</router-link>
+          <div class="detail_link">
+            <router-link :to="{ name: 'SchoolDetail', params: { id: post.id } }" class="user_menu">詳細ページに行く</router-link>
           </div>
         </li>
       </ul>
@@ -25,26 +25,14 @@
 </template>
 
 <script>
-// import Likes from '../../components/Likes.vue'
 import { mapGetters } from 'vuex'
 
 export default {
-  // components: {
-  //   Likes,
-  // },
-  // data() {
-  //   return {
-  //     likeList: []
-  //   }
-  // },
   created() {
     this.$store.dispatch('fetchPost')
   },
   computed: {
-    ...mapGetters(['postData']),
-    // count() {
-    //   return this.likeList.length
-    // },
+    ...mapGetters(['postData'])
   },
 };
 </script>
@@ -59,16 +47,11 @@ export default {
 
   }
 
-  .list-wrapper {
+  .list_wrapper {
     background: #fafafa;
     margin: 3em auto;
-    padding: 0 1em;
+    padding: 1em 1em;
     max-width: 800px;
-  }
-
-
-  ul li{
-    list-style:none;
   }
 
   li {
@@ -78,12 +61,12 @@ export default {
     padding: 0 1em;
   }
 
-  .image-position {
+  .image_position {
     text-align: left;
   }
 
-  .detail-link {
+  .detail_link {
     text-align: right;
-
   }
+
 </style>

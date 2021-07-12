@@ -171,7 +171,7 @@ export default new VueRouter({
       path: '/usersedit',
       component: UsersEdit,
       beforeEnter(to, from, next) {
-        if (store.getters.idData['name'] && store.getters.idData['email'] !== 'guest@example.com') {
+        if (store.getters.idData['name']) {
           next();
         } else {
           next('/');

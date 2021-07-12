@@ -1,15 +1,18 @@
 <template>
-  <div>
-    <h2>お気に入りしているスクールID一覧</h2>
-      <tr>
-        <th>スクールID(リンク)</th>
-        <br><br>
-      </tr>
-      <tr v-for="like in likeList" :key="like.id">
-        <td v-if="like.user_id == idData.id">
-          <router-link :to="{ path: `/posts/${like.post_id}` }">{{ like.post_id }}</router-link>
-        </td>
-      </tr>
+  <div class="form_wrapper">
+    <div class="likeList_name">
+      <h2>Favorite number</h2>
+    </div>
+      <div class="link_description">
+        <h3>School No.(detail pages)</h3>
+      </div>
+      <ul v-for="like in likeList" :key="like.id">
+        <template v-if="like.user_id == idData.id">
+          <li class="list_number">
+            <router-link :to="{ path: `/posts/${like.post_id}` }" class="link_menu">No.{{ like.post_id }}</router-link>
+          </li>
+        </template>
+      </ul>
   </div>
 </template>
 
@@ -26,10 +29,6 @@ export default {
     }
   },
   computed: {
-    // いいね数を返す
-    count() {
-      return this.likeList.length
-    },
     // ログインユーザが既にいいねしているかを判定する
     isLiked() {
       if (this.likeList.length === 0) { return false }
@@ -38,9 +37,6 @@ export default {
     idData() {
       return this.$store.getters.idData;
     },
-    // isAuthenticated() {
-    //   return this.$store.getters.idData['id'] == this.like.user_id;
-    // }
   },
   created: function() {
     this.createdLike().then(result => {
@@ -62,3 +58,30 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.likeList_name {
+  text-align:left;
+  font-weight:bold;
+  font-size:1.2rem;
+  margin-bottom: 30px;
+  letter-spacing:.1rem;
+}
+
+.link_description {
+  margin-bottom: 30px;
+  text-align:left;
+  font-weight:bold;
+  font-size:1.0rem;
+  border-bottom: solid #1e366a 1px;
+}
+
+.list_number {
+  text-align:left;
+  font-weight:bold;
+  font-size:1.2rem;
+  margin: 1rem auto 1rem;
+  letter-spacing:.1rem;
+}
+</style>

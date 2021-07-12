@@ -1,10 +1,10 @@
 <template>
-  <div class="form-wrapper">
-    <div class="menu-name">
+  <div class="form_wrapper">
+    <div class="menu_name">
       <h2>School registration</h2>
     </div>
     <div class="cp_iptxt">
-      <h3 class="edit-name">Photo</h3>
+      <h3 class="edit_name">Photo</h3>
       <input
         type="file"
         id="image"
@@ -50,7 +50,7 @@
       >
     </div>
     <template v-if="isAuthenticated">
-      <div class="button-panel">
+      <div class="button_panel">
         <button class="button" @click="createInfo">内容を登録する</button>
       </div>
     </template>

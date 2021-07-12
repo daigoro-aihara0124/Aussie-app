@@ -1,17 +1,21 @@
 <template>
-  <div>
-    <br>
+  <div class="profile_wrapper">
     <UserImage :image="idData.image" />
-    <template v-if="isAuthenticated">
-    <h3>ID: {{ idData.id }}</h3>
-    </template>
-    <h3>こちらは、{{ idData.name }}さんのページです。</h3>
-    <h3>メールアドレスは、{{ idData.email }}です。</h3>
-    <template v-if="isAuthenticated">
-      <router-link to="/usersedit" class="header-item">会員情報の編集ページへ</router-link>
-    </template>
-    <br><br>
-    <router-link to="/myLikes" class="header-item">お気に入りしたスクールページ一覧へ</router-link>
+    <div class="menu_name">
+      <h3>プロフィール</h3>
+    </div>
+    <ul class="school_name">
+      <li>NAME： {{ idData.name }}</li>
+      <li>ID：  {{ idData.id }}</li>
+      <li>EMAIL：  {{ idData.email }}</li>
+    </ul>
+    <div class="profile_menu">
+      <h3>メニュー</h3>
+    </div>
+    <ul class="header_item">
+      <li><router-link to="/usersedit" class="user_menu">会員情報の編集ページへ</router-link></li>
+      <li><router-link to="/myLikes" class="user_menu">お気に入りしたスクールページ一覧へ</router-link></li>
+    </ul>
   </div>
 </template>
 
@@ -24,9 +28,6 @@ export default {
     UserImage,
   },
   computed: {
-    isAuthenticated() {
-      return this.$store.getters.idData['email'] !== 'guest@example.com';
-    },
     idData() {
       return this.$store.getters.idData;
     },
@@ -41,12 +42,33 @@ export default {
 </script>
 
 <style scoped>
-  .user__image{
-    height: 150px;
-    width: 150px;
-    margin: 17px;
-    border-radius: 10px;
-    border: 1px solid gray;
+  .profile_wrapper {
+    background: #fafafa;
+    margin: 3em auto;
+    padding: 0 1em;
+    max-width: 500px;
   }
+
+  .profile_menu {
+  text-align:left;
+  font-weight:bold;
+  font-size:1.2rem;
+  margin: 1rem auto 1rem;
+  letter-spacing:.1rem;
+}
+
+ul {
+  color: #1e366a;
+  border-top: solid #1e366a 1px;/*上のボーダー*/
+  border-bottom: solid #1e366a 1px;/*下のボーダー*/
+  padding: 0.5em 0 0.5em 1.5em;
+}
+
+ul li {
+  line-height: 1.5;
+  padding: 0.5em 0;
+  text-align: left;
+  list-style:none;
+}
 
 </style>

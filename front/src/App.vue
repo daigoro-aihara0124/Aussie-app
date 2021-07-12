@@ -1,66 +1,160 @@
 <template>
   <div id="app">
-    <header>
-      <template v-if="isAuthenticated">
-        <router-link to="/" class="header-item">ホーム</router-link>
-        <template v-if="guestAuthenticated">
-          <router-link to="/schoolRegister" class="header-item">スクール登録フォーム</router-link>
-        </template>
-        <router-link to="/schoolIndex" class="header-item">スクール一覧</router-link>
-        <router-link to="/mypage" class="header-item">マイページ</router-link>
-        <span class="header-item" @click="logout">ログアウト</span>
-      </template>
-      <template v-if="!isAuthenticated">
-        <router-link to="/" class="header-item">ホーム</router-link>
-        <span class="header-item" @click="guestUserLogin">ゲストユーザーログイン</span>
-        <router-link to="/login" class="header-item">ログイン</router-link>
-        <router-link to="/register" class="header-item">登録</router-link>
-      </template>
-    </header>
+    <Header/>
     <router-view></router-view>
+    <Footer/>
   </div>
 </template>
 
 <script>
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+
 export default {
-  computed: {
-    isAuthenticated() {
-      return this.$store.getters.idTokens['access-token'] !== null;
-    },
-    guestAuthenticated() {
-      return this.$store.getters.idData['email'] !== 'guest@example.com';
-    },
+  components: {
+    Header,
+    Footer
   },
-  methods: {
-    logout: async function() {
-      return await this.$store.dispatch('logout');
-    },
-    guestUserLogin: async function() {
-      await this.$store.dispatch('guestUserLogin', {
-        email: 'guest@example.com',
-        password: "guest12345"
-      });
-    }
-  }
 };
 </script>
 
-<style scoped>
-  .header-item {
-    padding: 10px;
-    cursor: pointer;
-  }
-</style>
 
 <style>
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 100px;
+  box-sizing: border-box;
 }
+
+/* プロフィール画像 */
+.user_image{
+  height: 150px;
+  width: 150px;
+  margin: 17px;
+  border-radius: 50%;
+  border: 1px solid gray;
+}
+
+/* ページタイトル */
+.menu_name {
+text-align:left;
+font-weight:bold;
+font-size:1.2rem;
+margin: 1rem auto 1rem;
+letter-spacing:.1rem;
+}
+
+/* ログイン、登録機能、編集機能、お気に入り一覧共通 */
+.form_wrapper {
+  background: #fafafa;
+  margin: 3em auto;
+  padding: 1em 1em;
+  max-width: 500px;
+}
+
+ul li {
+  list-style:none;
+}
+
+.edit_name {
+  text-align:left;
+}
+
+h1.title {
+  text-align: center;
+  padding: 1em 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.cp_iptxt {
+position: relative;
+width: 90%;
+margin: 40px 3%;
+}
+
+.cp_iptxt input {
+font: 15px/24px sans-serif;
+box-sizing: border-box;
+width: 100%;
+padding: 0.3em;
+padding-left: 30px;
+letter-spacing: 1px;
+border: 0;
+}
+
+.cp_iptxt textarea {
+font: 15px/24px sans-serif;
+box-sizing: border-box;
+width: 100%;
+padding: 0.3em;
+padding-left: 30px;
+letter-spacing: 1px;
+border: 0;
+}
+
+.cp_iptxt input:focus {
+outline: none;
+}
+
+.cp_iptxt input:focus::after {
+outline: none;
+}
+
+.cp_iptxt textarea:focus {
+outline: none;
+}
+
+.cp_iptxt textarea:focus::after {
+outline: none;
+}
+
+.cp_iptxt::after {
+	display: block;
+	width: 100%;
+	height: 4px;
+	margin-top: -1px;
+	content: '';
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	border-color: #da3c41;
+}
+
+.button_panel {
+  margin: 2em 0 0;
+  width: 100%;
+}
+
+.button_panel .button {
+  background: #f16272;
+  border: none;
+  border-radius:30px;
+  color: #fff;
+  cursor: pointer;
+  height: 50px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+}
+
+.button:hover {
+  background: #ee3e52;
+}
+
 /* register,loginのマスク */
 .eye::after {
   font-family: 'FontAwesome';
@@ -72,7 +166,7 @@ export default {
   content: "\f070";
 }
 
-.input-icon {
+.input_icon {
   position: relative;
   margin-top: -25px;
   margin-left: -20px;
@@ -80,4 +174,30 @@ export default {
 .hidden {
   display: none;
 }
+
+/* 投稿一覧、詳細 */
+.school_name {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: left;
+  margin: 1rem auto 1rem;
+  letter-spacing:.1rem;
+  border-bottom: solid #1e366a 1px;/*下のボーダー*/
+  }
+
+/* リンク用 */
+  .user_menu {
+    transition: .4s;
+    text-decoration: none;
+  }
+  .user_menu:hover {
+    color: #996633;
+  }
+
+  .link_menu {
+    transition: .4s;
+  }
+  .link_menu:hover {
+    color: #996633;
+  }
 </style>

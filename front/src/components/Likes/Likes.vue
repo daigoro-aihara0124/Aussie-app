@@ -14,7 +14,7 @@
   import axios from 'axios'
 
   export default {
-  props: ['postid', 'post'],
+  props: ['postid'],
   data() {
     return {
       likeList: [],
@@ -97,7 +97,7 @@ span {
 .like-btn {
 width: 25px;
 height: 20px;
-font-size: 20px;
+font-size: 25px;
 color: #808080;
 margin-left: 0px;
 margin-right: 20px;
@@ -107,7 +107,7 @@ cursor: pointer;
 .unlike-btn {
 width: 25px;
 height: 20px;
-font-size: 20px;
+font-size: 25px;
 color: #e54747;
 margin-left: 0px;
 margin-right: 20px;

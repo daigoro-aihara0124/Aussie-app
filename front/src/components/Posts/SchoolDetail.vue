@@ -1,48 +1,48 @@
 <template>
-  <div class="detail-wrapper">
-    <div class="menu-name">
-      <h2>スクール詳細</h2>
+  <div class="detail_wrapper">
+    <div class="menu_name">
+      <h2>School details</h2>
     </div>
-    <div class="like-position">
-      <likes :postid ="postid" :post ="post" ></likes>
+    <div class="like_position">
+      <likes :postid ="postid"></likes>
     </div>
-    <div class="school-name">
+    <div class="school_name">
       <h3>No.{{ post.id }}<br>{{ post.name }}</h3>
     </div>
     <ul>
       <li>
         <img :src="post.image_url" class="post_image" />
       </li>
-      <div class="school-name">
+      <div class="school_name">
         <h3>Information</h3>
       </div>
       <li>
-        <div class="school-name">
+        <div class="school_name">
           <label for="address">City: </label>
           {{ post.address }}
         </div>
-        <div class="school-name">
+        <div class="school_name">
           <label for="comment">Introduction: </label>
           {{ post.comment }}
         </div>
-        <div class="school-name">
+        <div class="school_name">
           <label for="term">Term: </label>
           {{ post.term }}
         </div>
-        <div class="school-name">
+        <div class="school_name">
           <label for="fee">Fee(Per day): </label>
           ¥{{ post.fee }}〜
         </div>
-        <div class="school-name">
+        <div class="school_name">
           <label for="user_id">Host number: </label>
           {{ post.user_id }}
         </div>
-        <div class="school-name">
-          <router-link :to="{ path: `/reserves/${post.id}` }">To reservation page</router-link>
+        <div class="reserve_link">
+          <router-link :to="{ path: `/reserves/${post.id}` }" class="user_menu">予約する</router-link>
         </div>
-        <div class="edit-link">
+        <div class="edit_link">
           <template v-if="isAuthenticated">
-            <router-link :to="{ path: `/posts/${post.id}/edit` }">編集ページ</router-link>
+            <router-link :to="{ path: `/posts/${post.id}/edit` }" class="user_menu">編集ページ</router-link>
           </template>
         </div>
       </li>
@@ -98,15 +98,11 @@ export default {
     border: 1px solid gray;
   }
 
-  .detail-wrapper {
+  .detail_wrapper {
     background: #fafafa;
     margin: 3em auto;
-    padding: 0 1em;
+    padding: 1em 1em;
     max-width: 1000px;
-  }
-
-  ul li{
-    list-style:none;
   }
 
   li {
@@ -116,16 +112,24 @@ export default {
     padding: 0 1em;
   }
 
-  .like-position {
+  .like_position {
     text-align: right;
   }
 
-  .edit-link {
+  .reserve_link {
     font-size: 1.2em;
     font-weight: bold;
     text-align: right;
     margin: 1rem auto 1rem;
     letter-spacing:.1rem;
     border-bottom: solid #1e366a 1px;/*下のボーダー*/
+  }
+
+  .edit_link {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: right;
+    margin: 1rem auto 1rem;
+    letter-spacing:.1rem;
   }
 </style>
