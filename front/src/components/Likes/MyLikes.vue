@@ -1,7 +1,7 @@
 <template>
   <div class="form_wrapper">
     <div class="likeList_name">
-      <h2>Favorite number</h2>
+      <h2>Favorite School</h2>
     </div>
       <div class="link_description">
         <h3>School No.(detail pages)</h3>
@@ -18,7 +18,6 @@
 
 <script>
 import axios from 'axios'
-// import store from '../store';
 
 export default {
 
