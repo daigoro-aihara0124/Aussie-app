@@ -91,8 +91,13 @@ export default {
       formData.append("comment", this.post.comment);
       formData.append("term", this.post.term);
       formData.append("fee", this.post.fee);
-      await this.$store.dispatch('createInfo',formData);
-      this.$router.push('/schoolIndex');
+      try {
+        await this.$store.dispatch('createInfo',formData);
+        this.$router.push('/schoolIndex');
+      }
+      catch (error) {
+        alert("入力に誤りがあります");
+      }
     }
   }
 };

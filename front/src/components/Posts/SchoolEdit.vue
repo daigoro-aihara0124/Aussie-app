@@ -99,12 +99,24 @@ export default {
       formData.append("term", this.post.term);
       formData.append("fee", this.post.fee);
       formData.append("user_id", this.post.user_id);
-      await this.$store.dispatch('editInfo', { postid, formData });
-      this.$router.push('/schoolIndex');
+      try {
+        await this.$store.dispatch('editInfo', { postid, formData });
+        this.$router.push('/schoolIndex');
+      }
+      catch (error) {
+        alert("入力に誤りがあります");
+      }
     },
-    del(postid) { // 追加
-      this.$store.dispatch('deleteInfo', postid)
-      this.$router.push('/schoolIndex');
+    async del(postid) { // 追加
+      let result = confirm("削除しますか？")
+      if(result) {
+        await this.$store.dispatch('deleteInfo', postid)
+        this.$router.push('/schoolIndex');
+      }
+      else {
+        postid.preventDefault();
+        return;
+      }
     }
   }
 }
