@@ -43,8 +43,15 @@ export default {
     }
   },
   methods: {
-    logout: async function() {
-      return await this.$store.dispatch('logout');
+    logout: async function(e) {
+      let result = confirm("ログアウトしますか？")
+      if(result) {
+        return await this.$store.dispatch('logout');
+      }
+      else {
+        e.preventDefault();
+        return;
+      }
     },
     guestUserLogin: async function() {
       await this.$store.dispatch('guestUserLogin', {
@@ -66,6 +73,11 @@ export default {
 
   .home_aicon {
     text-align: left;
+  }
+
+  .home_aicon h2 {
+    color: #008000;
+    font-size: 1.5em;
   }
 
   .size {
