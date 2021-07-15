@@ -52,10 +52,15 @@ export default {
       this.isChecked = !this.isChecked;
     },
     login: async function() {
-      await this.$store.dispatch('login', {
-        email: this.email,
-        password: this.password
-      });
+      try {
+        await this.$store.dispatch('login', {
+          email: this.email,
+          password: this.password
+        });
+      }
+      catch (error) {
+        alert("入力に誤りがあります");
+      }
     }
   }
 };

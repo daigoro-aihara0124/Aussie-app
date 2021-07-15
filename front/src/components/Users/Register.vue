@@ -8,7 +8,7 @@
           id="name"
           type="text"
           v-model="name"
-          placeholder="name"
+          placeholder="name(必須)"
         >
       </div>
       <div class="cp_iptxt">
@@ -16,7 +16,7 @@
           id="email"
           type="email"
           v-model="email"
-          placeholder="email"
+          placeholder="email(必須)"
         >
       </div>
       <div class="cp_iptxt">
@@ -25,7 +25,7 @@
         id="password"
         class="input"
         v-model="password"
-        placeholder="password"
+        placeholder="password(必須) 8文字以上"
         >
         <span class="input_icon">
           <span :class="iconType" @click="onClick"></span>
@@ -46,7 +46,7 @@ export default {
       name: '',
       email: '',
       password: '',
-      isChecked: false
+      isChecked: false,
     };
   },
   computed: {
@@ -62,12 +62,18 @@ export default {
       this.isChecked = !this.isChecked;
     },
     register: async function() {
-      await this.$store.dispatch('register', {
-        name: this.name,
-        email: this.email,
-        password: this.password
-      });
-    }
-  }
+      try {
+        await this.$store.dispatch('register', {
+          name: this.name,
+          email: this.email,
+          password: this.password
+        });
+        alert("新規登録が完了しました")
+      }
+      catch (error) {
+        alert("入力に誤りがあります");
+      }
+    },
+  },
 };
 </script>

@@ -15,6 +15,7 @@
     <ul class="header_item">
       <li><router-link to="/usersedit" class="user_menu">会員情報の編集ページへ</router-link></li>
       <li><router-link to="/myLikes" class="user_menu">お気に入りしたスクールページ一覧へ</router-link></li>
+      <li><router-link to="/ReservedList" class="user_menu">予約済みのスクール一覧</router-link></li>
     </ul>
   </div>
 </template>
