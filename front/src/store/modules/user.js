@@ -81,7 +81,7 @@ export default {
         commit('updateIdTokens', response.headers);
         commit('updateIdData', response.data['data']);
         commit('updateLocalStorage', { idData: response.data['data'], idTokens: response.headers });
-        router.push('/mypage');
+        router.push('/', () => {});
       });
     },
     login: async function({ commit }, authData) {
@@ -93,7 +93,7 @@ export default {
         commit('updateIdTokens', response.headers);
         commit('updateIdData', response.data['data']);
         commit('updateLocalStorage', { idData: response.data['data'], idTokens: response.headers });
-        router.push('/mypage');
+        router.push('/mypage', () => {});
       });
     },
     logout: async function({ commit }) {
@@ -125,7 +125,7 @@ export default {
        localStorage.removeItem('name');
        localStorage.removeItem('email');
        localStorage.removeItem('image');
-       router.replace('/login');
+       router.replace('/', () => {});
       });
     },
     updateIdData({ commit }, formData) {

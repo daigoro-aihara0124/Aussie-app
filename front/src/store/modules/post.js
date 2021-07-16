@@ -53,7 +53,7 @@ export default {
       return response.data
     },
     async deleteInfo({ commit }, postid) {
-      await axios.delete(`api/v1/posts/${postid}`, {
+      const response = await axios.delete(`api/v1/posts/${postid}`, {
         headers: {
           'content-type': 'multipart/form-data',
           'access-token':  localStorage.getItem('access-token'),
@@ -62,6 +62,7 @@ export default {
         }
       });
       commit('deletePost', postid);
+      return response.data
     }
   }
 }
