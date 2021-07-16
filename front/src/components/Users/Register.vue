@@ -68,7 +68,10 @@ export default {
           email: this.email,
           password: this.password
         });
-        alert("新規登録が完了しました")
+        this.$store.commit(`message/setContent`, {
+          content: '新規登録しました！',
+          timeout: 3000
+        })
       }
       catch (error) {
         alert("入力に誤りがあります");

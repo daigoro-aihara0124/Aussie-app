@@ -57,6 +57,10 @@ export default {
           email: this.email,
           password: this.password
         });
+        this.$store.commit(`message/setContent`, {
+          content: 'ログインに成功しました！',
+          timeout: 6000
+        })
       }
       catch (error) {
         alert("入力に誤りがあります");

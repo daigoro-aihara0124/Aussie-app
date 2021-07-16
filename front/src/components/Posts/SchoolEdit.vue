@@ -101,7 +101,11 @@ export default {
       formData.append("user_id", this.post.user_id);
       try {
         await this.$store.dispatch('editInfo', { postid, formData });
-        this.$router.push('/schoolIndex');
+        this.$router.push('/schoolIndex'),
+        this.$store.commit(`message/setContent`, {
+          content: 'データの編集をしました！',
+          timeout: 5000
+        })
       }
       catch (error) {
         alert("入力に誤りがあります");
@@ -111,7 +115,11 @@ export default {
       let result = confirm("削除しますか？")
       if(result) {
         await this.$store.dispatch('deleteInfo', postid)
-        this.$router.push('/schoolIndex');
+        this.$router.push('/schoolIndex'),
+        this.$store.commit(`message/setContent`, {
+          content: 'データを削除しました！',
+          timeout: 5000
+        })
       }
       else {
         postid.preventDefault();

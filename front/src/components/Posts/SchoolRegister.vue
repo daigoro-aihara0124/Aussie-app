@@ -39,7 +39,7 @@
       <input
         id="term"
         v-model="post.term"
-        placeholder="Term(1 to 24 weeks)"
+        placeholder="Term(Min 1 week, max 24 weeks)"
       >
     </div>
     <div class="cp_iptxt">
@@ -93,7 +93,11 @@ export default {
       formData.append("fee", this.post.fee);
       try {
         await this.$store.dispatch('createInfo',formData);
-        this.$router.push('/schoolIndex');
+        this.$router.push('/schoolIndex'),
+        this.$store.commit(`message/setContent`, {
+          content: 'スクールを登録しました！',
+          timeout: 5000
+        })
       }
       catch (error) {
         alert("入力に誤りがあります");

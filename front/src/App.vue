@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header/>
+    <FlashMessage/>
     <router-view></router-view>
     <Footer/>
   </div>
@@ -9,11 +10,13 @@
 <script>
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
+import FlashMessage from './components/FlashMessage.vue';
 
 export default {
   components: {
     Header,
-    Footer
+    Footer,
+    FlashMessage
   },
 };
 </script>

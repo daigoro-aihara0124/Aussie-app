@@ -46,7 +46,11 @@ export default {
     logout: async function(e) {
       let result = confirm("ログアウトしますか？")
       if(result) {
-        return await this.$store.dispatch('logout');
+        return await this.$store.dispatch('logout'),
+        this.$store.commit(`message/setContent`, {
+          content: 'ログアウトしました！',
+          timeout: 5000
+        })
       }
       else {
         e.preventDefault();
@@ -58,6 +62,10 @@ export default {
         email: 'guest@example.com',
         password: "guest12345"
       });
+      this.$store.commit(`message/setContent`, {
+        content: 'ゲストログインしました！',
+        timeout: 5000
+      })
     }
   }
 };

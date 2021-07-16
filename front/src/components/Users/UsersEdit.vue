@@ -81,7 +81,11 @@ export default {
       formData.append('email', this.email);
       if (existsImage) formData.append('image', this.imageUrl);
 
-      return this.$store.dispatch('updateIdData', formData);
+      return this.$store.dispatch('updateIdData', formData),
+      this.$store.commit(`message/setContent`, {
+        content: 'ユーザー情報の変更をしました！',
+        timeout: 3000
+      })
     },
     deleteImage() {
       let formData = new FormData();
