@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
+  <div class="home_wrapper">
     <div class="bg_image">
       <div class="bg_text">
         <h2>オーストラリアへの留学をもっと気軽に</h2>
         <br>
-        <section>
+        <section v-if="isAuthenticated">
           <router-link to="/schoolIndex" class="link_button">さっそく探す</router-link>
         </section>
       </div>
@@ -12,17 +12,30 @@
   </div>
 </template>
 
+<script>
+
+export default {
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters.idData['id'] !== null;
+    },
+  },
+};
+</script>
+
 <style scoped>
-.container {
-  height: 1000px
+.home_wrapper {
+  min-height: 100vh;
+  width: 100%;
 }
+
 .bg_image {
   background-image: url('../assets/images/bg_img.jpeg');
-  height: 99%;
+  min-height: 100vh;;
   width: 100%;
   background-size:  cover;
   text-align:  center;    /* 文字中央寄せ */
-  margin-top: 10px;    /* 余白指定 */
+  margin-top: 0px;    /* 余白指定 */
   border: solid 2px;      /* 枠線指定 */
 }
 
@@ -38,6 +51,37 @@
 
 .bg_text h3 {
   color: #808080;
+}
+
+/* 480px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 480px) {
+  .home_wrapper {
+    min-height: 100vh;
+    width: 100%;
+  }
+  .bg_image {
+    background-image: url('../assets/images/4915802_s.jpg');
+    height: 100%;
+    width: 100%;
+    background-size:  cover;
+    text-align:  center;    /* 文字中央寄せ */
+    margin-top: 0px;    /* 余白指定 */
+    border: solid 2px;      /* 枠線指定 */
+  }
+
+  .bg_text {                         /* 枠線指定 */
+    display:  block;
+    text-align: left;                 /* インラインブロックにする */
+    padding: 50px 10px;                             /* 余白指定 */
+    font-family: 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',sans-serif;
+    color: #ffff00;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  .bg_text h3 {
+    color: #808080;
+  }
 }
 
 section {

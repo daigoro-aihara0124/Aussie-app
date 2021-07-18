@@ -127,10 +127,4 @@ export default {
     width: 100%;
   }
 
-  .detail_wrapper {
-    background: #fafafa;
-    margin: 3em auto;
-    padding: 0 1em;
-    max-width: 1000px;
-  }
 </style>

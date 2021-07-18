@@ -59,7 +59,7 @@ export default {
     width: 100%;
   }
 
-  .search_box {
+  .list_container .search_box {
     text-align: left;
     padding: 20px 100px 10px 50px;
     width: auto;
@@ -105,5 +105,34 @@ export default {
   .detail_link {
     text-align: right;
   }
+
+  /* 480px以下に適用されるCSS（スマホ用） */
+  @media screen and (max-width: 480px) {
+    .search_box {
+      text-align: center;
+
+    }
+
+    .search_box h2 {
+      font-size: 20px;
+    }
+
+    #input_box {
+      width:150px;
+      height:30px;
+      border-radius:2px;
+      outline:0;
+      background:#eee;
+    }
+
+    .list_wrapper {
+      background: #fafafa;
+      margin: 1em auto;
+      padding: 1em 1em;
+      max-width: 800px;
+    }
+
+  }
+
 
 </style>

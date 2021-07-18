@@ -35,7 +35,7 @@
               </div>
               <div class="school_name">
               <label for="comment">Fee： </label>
-                ¥{{ reserve.total_fee }}
+                ¥{{ reserve.total_fee | addComma }}
               </div>
               <div class="school_name">
               <label for="comment">School Link： </label>
@@ -72,6 +72,11 @@ export default {
     idData() {
       return this.$store.getters.idData;
     },
+  },
+  filters: {
+    addComma: function (value) {
+      return value.toLocaleString();
+    }
   },
   created() {
     this.$store.dispatch('detailReservation', this.reserveid);
