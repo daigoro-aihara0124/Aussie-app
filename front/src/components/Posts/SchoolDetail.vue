@@ -31,7 +31,7 @@
         </div>
         <div class="school_name">
           <label for="fee">Fee(Per day): </label>
-          ¥{{ post.fee }}〜
+          ¥{{ post.fee | addComma }}〜
         </div>
         <div class="school_name">
           <label for="user_id">Host number: </label>
@@ -83,6 +83,11 @@ export default {
       return this.$store.getters.idData;
     },
   },
+  filters: {
+    addComma: function (value) {
+      return value.toLocaleString();
+    }
+  },
   created() {
     this.$store.dispatch('detailPost', this.postid);
   }
@@ -132,4 +137,16 @@ export default {
     margin: 1rem auto 1rem;
     letter-spacing:.1rem;
   }
+
+  /* 480px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 480px) {
+  .post_image {
+    height: 200px;
+    width: 300px;
+    margin: 5px;
+    border-radius: 10px;
+    border: 1px solid gray;
+  }
+}
+
 </style>
