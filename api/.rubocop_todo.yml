@@ -144,6 +144,8 @@ Metrics/AbcSize:
 # IgnoredMethods: refine
 Metrics/BlockLength:
   Max: 85
+  Exclude:
+    - 'api/spec/requests/posts_spec.rb'
 
 # Offense count: 2
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
