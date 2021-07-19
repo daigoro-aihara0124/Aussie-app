@@ -12,7 +12,8 @@ Rails.application.routes.draw do
       resources :reserves, only: [:index, :create, :show, :destroy]
 
       mount_devise_token_auth_for 'User', at: 'auth', controllers: {
-        registrations: 'api/v1/auth/registrations'
+        registrations: 'api/v1/auth/registrations',
+        sessions: 'api/v1/auth/sessions'
       }
     end
   end
