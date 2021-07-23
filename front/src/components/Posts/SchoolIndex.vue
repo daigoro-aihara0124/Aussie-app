@@ -110,7 +110,6 @@ export default {
   @media screen and (max-width: 480px) {
     .search_box {
       text-align: center;
-
     }
 
     .search_box h2 {
