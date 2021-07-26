@@ -1,16 +1,19 @@
 FROM ruby:2.7.1
 
-RUN apt-get update -qq && \
-    apt-get install -y build-essential \
-                       libpq-dev \
-                       nodejs \
-   && rm -rf /var/lib/apt/lists/*
-
-RUN mkdir /app
-ENV APP_ROOT /app
-WORKDIR $APP_ROOT
-
-ADD ./Gemfile $APP_ROOT/Gemfile
-ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
-
+ENV LANG C.UTF-8
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs && apt install -y vim nano
+RUN gem install bundler
+WORKDIR /tmp
+ADD Gemfile Gemfile
+ADD Gemfile.lock Gemfile.lock
 RUN bundle install
+ENV APP_HOME /app_name
+RUN mkdir -p $APP_HOME
+WORKDIR $APP_HOME
+ADD . $APP_HOME
+
+# Add a script to be executed every time the container starts.
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000
