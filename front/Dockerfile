@@ -1,6 +1,6 @@
 FROM node:12.18.3-alpine
 
-ENV APP_HOME /front:/app
+ENV APP_HOME /front
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 
