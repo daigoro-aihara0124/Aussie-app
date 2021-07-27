@@ -19,7 +19,7 @@ port        ENV.fetch("PORT") { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 #
-#environment ENV.fetch("RAILS_ENV") { "development" }
+environment ENV.fetch("RAILS_ENV") { "development" }
 
 on_worker_boot do
   ActiveRecord::Base.establish_connection

@@ -1,0 +1,9 @@
+build:
+  docker:
+    web: Dockerfile
+  config:
+    WORKDIR: app
+    API_URL: https://git.heroku.com/my-aussie-daike-app.git
+
+run:
+  web: yarn run start
