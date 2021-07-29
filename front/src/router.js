@@ -20,8 +20,6 @@ import Reservation from './components/Reserves/Reservation.vue';
 import ReservedList from './components/Reserves/ReservedList.vue';
 import MyReserved from './components/Reserves/MyReserved.vue';
 
-
-
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -79,17 +77,6 @@ export default new VueRouter({
         }
       }
     },
-    // {
-    //   path: '/likeList',
-    //   component: LikeList,
-    //   beforeEnter(to, from, next) {
-    //     if (store.getters.idTokens['access-token']) {
-    //       next();
-    //     } else {
-    //       next('/login');
-    //     }
-    //   }
-    // },
     {
       path: '/myLikes',
       component: MyLikes,
