@@ -7,6 +7,6 @@ build:
     web: Dockerfile
   config:
     WORKDIR: app
-    API_URL: https://my-aussie-app-api-test.herokuapp.com/
+    API_URL: "https://my-aussie-app-api-test.herokuapp.com"
 run:
   web: yarn run build
