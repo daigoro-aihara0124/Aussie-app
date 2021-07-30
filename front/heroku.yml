@@ -9,4 +9,4 @@ build:
     WORKDIR: app
     API_URL: https://my-aussie-app-api-test.herokuapp.com/
 run:
-  web: yarn run start
+  web: yarn run build
