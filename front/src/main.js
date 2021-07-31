@@ -7,7 +7,7 @@ import axios from "axios";
 Vue.config.productionTip = false;
 
 axios.defaults.baseURL =
-"http://localhost:3000/";
+process.env.VUE_APP_API_ENDPOINT;
 
 store.dispatch('autoLogin');
 new Vue({
