@@ -33,12 +33,9 @@
           v-model.lazy="total_fee"
         >
       </div>
-        <template v-if="isAuthenticated">
-          <div class="button_panel">
-            <button class="button" @click="reseveSchool">以上の内容で予約する</button>
-          </div>
-        </template>
-      <h3 v-else>ゲストユーザーは予約できません。</h3>
+      <div class="button_panel">
+        <button class="button" @click="reseveSchool">以上の内容で予約する</button>
+      </div>
     </div>
     <SchoolDetail/>
   </div>

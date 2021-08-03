@@ -49,12 +49,9 @@
         placeholder="fee(Per day)"
       >
     </div>
-    <template v-if="isAuthenticated">
-      <div class="button_panel">
-        <button class="button" @click="createInfo">内容を登録する</button>
-      </div>
-    </template>
-    <h3 v-else>ゲストユーザーは登録できません。</h3>
+    <div class="button_panel">
+      <button class="button" @click="createInfo">内容を登録する</button>
+    </div>
   </div>
 </template>
 
