@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import store from './store';
 import Home from './components/Home.vue';
+import About from './components/About.vue';
 //user
 import Login from './components/Users/Login.vue';
 import Register from './components/Users/Register.vue';
@@ -28,6 +29,10 @@ export default new VueRouter({
     {
       path: '/',
       component: Home,
+    },
+    {
+      path: '/about',
+      component: About,
     },
     {
       path: '/schoolRegister',
