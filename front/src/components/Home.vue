@@ -4,6 +4,8 @@
       <div class="bg_text">
         <h2>オーストラリアへの留学をもっと気軽に</h2>
         <br>
+        <h3>Aussie Journeyでお気に入りの学校を見つけよう！！</h3>
+        <br>
         <section v-if="isAuthenticated">
           <router-link to="/schoolIndex" class="link_button">さっそく探す</router-link>
         </section>
@@ -50,7 +52,7 @@ export default {
 }
 
 .bg_text h3 {
-  color: #808080;
+  color: #CC0000;
 }
 
 /* 480px以下に適用されるCSS（スマホ用） */
@@ -80,7 +82,7 @@ export default {
   }
 
   .bg_text h3 {
-    color: #808080;
+    color: #00CC66;
   }
 }
 

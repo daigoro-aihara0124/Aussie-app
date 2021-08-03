@@ -7,6 +7,7 @@
           <router-link to="/"><i class="fas fa-home size"></i></router-link>
           <h2>Aussie Journey</h2>
         </div>
+        <!-- スマホ用ハンバーガーメニュー -->
         <div class="hamburger_wrapper">
           <div class="header-logo-menu">
             <div id="nav-drawer">
@@ -15,10 +16,11 @@
                 <label class="nav-unshown" id="nav-close" for="nav-input"></label>
                 <div id="nav-content">
                   <ul class="hamburger_menu">
-                    <li class="hamburger_list"><router-link to="/schoolRegister">スクール登録フォーム</router-link></li>
-                    <li class="hamburger_list"><router-link to="/schoolIndex">スクール一覧</router-link></li>
-                    <li class="hamburger_list"><router-link to="/ReservedList">予約済みのスクール一覧</router-link></li>
-                    <li class="hamburger_list"><router-link to="/mypage">マイページ</router-link></li>
+                    <li class="hamburger_list"><router-link to="/schoolRegister" class="list_item">スクール登録フォーム</router-link></li>
+                    <li class="hamburger_list"><router-link to="/schoolIndex" class="list_item">スクール一覧</router-link></li>
+                    <li class="hamburger_list"><router-link to="/ReservedList" class="list_item">予約済みのスクール一覧</router-link></li>
+                    <li class="hamburger_list"><router-link to="/about" class="list_item">About Aussie Journey</router-link></li>
+                    <li class="hamburger_list"><router-link to="/mypage" class="list_item">マイページ</router-link></li>
                     <li class="hamburger_list"><span @click="logout" class="guest_btn">ログアウト</span></li>
                   </ul>
                 </div>
@@ -31,7 +33,7 @@
             <li><router-link to="/schoolRegister" class="header_item">スクール登録フォーム</router-link></li>
           	<li><router-link to="/schoolIndex" class="header_item">スクール一覧</router-link></li>
           	<li><router-link to="/ReservedList" class="header_item">予約済みのスクール一覧</router-link></li>
-          	<li class="header_item">About</li>
+            <li><router-link to="/about" class="header_item">About Aussie Journey</router-link></li>
           </div>
           <div class="sign_items">
             <router-link to="/mypage" class="login_btn">マイページ</router-link>
@@ -53,8 +55,8 @@
                 <div id="nav-content">
                   <ul class="hamburger_menu">
                     <li class="hamburger_list"><span class="guest_btn" @click="guestUserLogin">ゲストユーザーログイン</span></li>
-                    <li class="hamburger_list"><router-link to="/login">ログイン</router-link></li>
-                    <li class="hamburger_list"><router-link to="/register">新規登録</router-link></li>
+                    <li class="hamburger_list"><router-link to="/login" class="list_item">ログイン</router-link></li>
+                    <li class="hamburger_list"><router-link to="/register" class="list_item">新規登録</router-link></li>
                   </ul>
                 </div>
             </div>
@@ -164,7 +166,7 @@ export default {
 
   .guest_btn {
     transition: .4s;
-    margin: 0px 5px;
+    margin-right: 5px
   }
 
   .guest_btn:hover {
@@ -184,7 +186,7 @@ export default {
   	overflow: hidden;
     text-align: center;
   	background-color: #808000;
-    width: 700px;
+    width: 645px;
   }
 
   .school_menu li {
@@ -219,6 +221,7 @@ export default {
   	background-color: #da3c41;
   }
 
+/*スマホ版は、ヘッダーメニューをハンバーガーメニューで表示*/
   .hamburger_wrapper {
   padding:10px;
   background: #ccc;
@@ -345,9 +348,14 @@ export default {
       font-size: 1.2em;
       font-weight: bold;
       text-align: left;
+      padding-left: 5px;
       margin: 1rem auto 1rem;
       letter-spacing:.1rem;
       border-bottom: solid #1e366a 1px;
+    }
+
+    .list_item {
+      text-decoration: none;
     }
 }
 
