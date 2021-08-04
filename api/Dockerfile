@@ -1,6 +1,6 @@
 FROM ruby:2.7.1
 
-RUN apt update -qq && apt install -y mariadb-client
+RUN apt update -qq && apt install -y mariadb-client graphviz
 
 WORKDIR /app_name
 COPY Gemfile /app_name/Gemfile
