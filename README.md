@@ -58,6 +58,9 @@
 
 ※お気に入り機能以外はVuexで管理しております。
 
+**ER図**
+<img width="1440" alt="スクリーンショット 2021-08-12 0 14 20" src="https://user-images.githubusercontent.com/74578337/129055970-55116ea7-3066-4358-9e98-586b4b3bdda8.png">
+
 **ポートフォリオURL**
 
 フロントエンド　[https://my-aussie-app-front-test.herokuapp.com/](https://my-aussie-app-front-test.herokuapp.com/)
