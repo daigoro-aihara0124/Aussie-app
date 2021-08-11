@@ -58,6 +58,10 @@
 
 ※お気に入り機能以外はVuexで管理しております。
 
+
+**機能紹介**
+<a href="https://gyazo.com/5c7f05d49843e5473fcfa2ad4988da19"><img src="https://i.gyazo.com/5c7f05d49843e5473fcfa2ad4988da19.gif" alt="Image from Gyazo" width="1000"/></a>
+
 **ER図**
 <img width="1440" alt="スクリーンショット 2021-08-12 0 14 20" src="https://user-images.githubusercontent.com/74578337/129055970-55116ea7-3066-4358-9e98-586b4b3bdda8.png">
 
