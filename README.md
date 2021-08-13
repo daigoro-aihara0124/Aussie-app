@@ -61,8 +61,8 @@
 
 **機能紹介**
 
-・ゲストログイン
-![demo](https://gyazo.com/5c7f05d49843e5473fcfa2ad4988da19/raw)
+・ゲストログイン、ログアウト(フラッシュメッセージをVuexで管理)
+![demo](https://gyazo.com/8287b9d2436c38cd47431f8a747159d7/raw)
 
 
 ・スクール検索機能
@@ -74,7 +74,7 @@
 
 **ポートフォリオURL**
 
-　[https://my-aussie-app-front-test.herokuapp.com/](https://my-aussie-app-front-test.herokuapp.com/)
+[https://my-aussie-app-front-test.herokuapp.com/](https://my-aussie-app-front-test.herokuapp.com/)
 
 
 **ソースコード**
