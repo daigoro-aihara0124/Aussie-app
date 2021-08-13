@@ -60,10 +60,12 @@
 
 
 **機能紹介**
+
 ・ゲストログイン
-https://gyazo.com/5c7f05d49843e5473fcfa2ad4988da19/raw
+![demo](https://gyazo.com/5c7f05d49843e5473fcfa2ad4988da19/raw)
+
 ・スクール検索機能
-https://gyazo.com/a90441c384dd267ce6208e2874ec690c/raw
+![demo](https://gyazo.com/a90441c384dd267ce6208e2874ec690c/raw)
 
 **ER図**
 <img width="1440" alt="スクリーンショット 2021-08-12 0 14 20" src="https://user-images.githubusercontent.com/74578337/129055970-55116ea7-3066-4358-9e98-586b4b3bdda8.png">
