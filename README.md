@@ -62,8 +62,10 @@
 **機能紹介**
 
 ・ゲストログイン、ログアウト(フラッシュメッセージをVuexで管理)
-![demo](https://gyazo.com/8287b9d2436c38cd47431f8a747159d7/raw)
+https://gyazo.com/8287b9d2436c38cd47431f8a747159d7/
 
+.お気に入り機能
+https://gyazo.com/4071cfc9b2a7e5672030cc02c747a811
 
 ・スクール検索機能
 ![demo](https://gyazo.com/a90441c384dd267ce6208e2874ec690c/raw)
