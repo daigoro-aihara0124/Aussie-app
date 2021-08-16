@@ -26,6 +26,7 @@
   JavaScript
 
   HTML / CSS
+  
 
 
 ・バックエンド
@@ -33,6 +34,7 @@
   Rails 6.0.3.6
 
   Ruby 2.7.1
+  
 
 
 ・テスト
@@ -40,6 +42,7 @@
   rubocop
 
   Rspec
+  
 
 
 ・インフラ関連
@@ -47,11 +50,13 @@
   Docker
 
   heroku
+  
 
 
 ・ソースコード
 
   GitHub
+  
 
 
 **機能一覧**
