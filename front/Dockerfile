@@ -4,4 +4,15 @@ ENV APP_HOME /app
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 
-RUN apk update && npm install -g @vue/cli
+RUN apk update && yarn global add @vue/cli
+
+COPY package*.json ./
+RUN yarn install
+
+COPY . .
+
+RUN yarn run build
+
+EXPOSE 8080
+
+CMD [ "http-server", "dist", "-p", "8000", "-g", "-b" ]
