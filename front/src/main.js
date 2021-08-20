@@ -10,6 +10,13 @@ axios.defaults.baseURL =
 process.env.VUE_APP_API_ENDPOINT;
 
 store.dispatch('autoLogin');
+
+Vue.filter('addComma', function(value){
+  if (!value) return ''
+  value = value.toLocaleString()
+  return value.charAt(0).toUpperCase() + value.slice(1)
+});
+
 new Vue({
   router,
   store,
