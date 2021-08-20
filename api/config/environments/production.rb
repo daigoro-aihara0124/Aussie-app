@@ -102,7 +102,7 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  Rails.application.routes.default_url_options[:protocol] = 'http'
+  Rails.application.routes.default_url_options[:protocol] = 'https'
   Rails.application.routes.default_url_options[:host] = 'my-aussie-app-api-test.herokuapp.com'
   config.x.allow_origins = 'my-aussie-app-front-test.herokuapp.com'
 end
