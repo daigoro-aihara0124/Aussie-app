@@ -18,24 +18,24 @@
       </div>
       <li>
         <div class="school_name">
-          <label for="address">City: </label>
-          {{ post.address }}
+          <label for="address">City:</label>
+          <p>{{ post.address }}</p>
         </div>
         <div class="school_name">
-          <label for="comment">Introduction: </label>
-          {{ post.comment }}
+          <label for="comment">Introduction:</label>
+          <p>{{ post.comment }}</p>
         </div>
         <div class="school_name">
-          <label for="term">Term: </label>
-          {{ post.term }}
+          <label for="term">Term:</label>
+          <p>{{ post.term }}</p>
         </div>
         <div class="school_name">
-          <label for="fee">Fee(Per day): </label>
-          ¥{{ post.fee | addComma }}〜
+          <label for="fee">Fee(Per day):</label>
+          <p>¥{{ post.fee | addComma }}〜</p>
         </div>
         <div class="school_name">
-          <label for="user_id">Host number: </label>
-          {{ post.user_id }}
+          <label for="user_id">Host number:</label>
+          <p>{{ post.user_id }}</p>
         </div>
         <div class="reserve_link">
           <router-link :to="{ path: `/reserves/${post.id}` }" class="user_menu">予約する</router-link>
@@ -83,11 +83,6 @@ export default {
       return this.$store.getters.idData;
     },
   },
-  filters: {
-    addComma: function (value) {
-      return value.toLocaleString();
-    }
-  },
   created() {
     this.$store.dispatch('detailPost', this.postid);
   }
@@ -117,6 +112,10 @@ export default {
     padding: 0 1em;
   }
 
+  p {
+    margin-left: 2rem;
+  }
+
   .like_position {
     text-align: right;
   }
@@ -125,7 +124,7 @@ export default {
     font-size: 1.2em;
     font-weight: bold;
     text-align: right;
-    margin: 1rem auto 1rem;
+    margin: 1.2rem auto 1.2rem;
     letter-spacing:.1rem;
     border-bottom: solid #1e366a 1px;/*下のボーダー*/
   }
