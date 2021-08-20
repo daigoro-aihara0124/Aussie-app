@@ -9,28 +9,30 @@
       </div>
       <div class="cp_iptxt">
         <h3 class="edit_name">開始日</h3>
-        <Datepicker :language="ja" class="date" placeholder="日付を選択してください" format="yyyy-MM-dd"
-          id="start_date" v-model.lazy="reserve.start_date">
+        <Datepicker :language="ja" :highlighted="highlighted" :disabled-dates="disabledDates"
+          class="date" placeholder="日付を選択してください" format="yyyy-MM-dd"
+          id="start_date" v-model="reserve.start_date">
         </Datepicker>
       </div>
       <div class="cp_iptxt">
         <h3 class="edit_name">終了日</h3>
-        <Datepicker :language="ja" class="date" placeholder="日付を選択してください" format="yyyy-MM-dd"
-          id="end_date" v-model.lazy="reserve.end_date">
+        <Datepicker :language="ja" :highlighted="highlighted" :disabled-dates="disabledDates"
+          class="date" placeholder="日付を選択してください" format="yyyy-MM-dd"
+          id="end_date" v-model="reserve.end_date">
         </Datepicker>
       </div>
       <div class="cp_iptxt">
         <h3 class="edit_name">日数</h3>
         <input
           id="total_days"
-          v-model.lazy="total_days"
+          v-model="total_days"
         >
       </div>
       <div class="cp_iptxt">
         <h3 class="edit_name">合計金額</h3>
         <input
           id="total_fee"
-          v-model.lazy="total_fee"
+          v-model="total_fee"
         >
       </div>
       <div class="button_panel">
@@ -55,10 +57,17 @@ export default {
     return {
       ja:ja,
       format: 'yyyy-MM-dd',
+      highlighted: {
+        days: [6, 0]
+      },
+      disabledDates: {
+        to: new Date(),
+      },
       reserve: {
         start_date: null,
         end_date: null,
         post_id: this.$route.params.id,
+
       },
     }
   },
@@ -86,6 +95,10 @@ export default {
       }
       else if (this.total_days < 7) {
         alert("予約は最低7日以上からです。")
+        e.preventDefault();
+      }
+      else if (this.total_days > 168) {
+        alert("予約は最高168日までです。")
         e.preventDefault();
       }
       else {
@@ -120,7 +133,7 @@ export default {
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+    text-align: left;
     width: 100%;
   }
 
