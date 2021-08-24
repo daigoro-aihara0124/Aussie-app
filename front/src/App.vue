@@ -183,7 +183,7 @@ outline: none;
   font-size: 1.2em;
   font-weight: bold;
   text-align: left;
-  margin: 1rem auto 1rem;
+  margin: 1.2rem auto 1.2rem;
   letter-spacing:.1rem;
   border-bottom: solid #1e366a 1px;/*下のボーダー*/
   }
