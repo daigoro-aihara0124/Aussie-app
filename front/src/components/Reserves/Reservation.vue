@@ -67,21 +67,14 @@ export default {
         start_date: null,
         end_date: null,
         post_id: this.$route.params.id,
-
       },
     }
   },
   computed: {
     total_fee: function() { return this.post.fee * this.total_days },
-    total_days: function() { return ((this.reserve.end_date - this.reserve.start_date) / 86400000 + 1 )},
+    total_days: function() { return (this.reserve.end_date - this.reserve.start_date) / 86400000 + 1 },
     post() {
       return this.$store.getters.post;
-    },
-    isAuthenticated() {
-      return this.$store.getters.idData['email'] !== 'guest@example.com';
-    },
-    reserveAuthenticated() {
-      return this.$store.getters.idData['id'] !== this.$store.getters.reserve['user_id']
     },
   },
   created() {
