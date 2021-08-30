@@ -61,7 +61,6 @@
 </template>
 
 <script>
-// import axios from "axios";
 
 export default {
   data() {
@@ -92,6 +91,7 @@ export default {
     async editInfo(postid) {
       let formData = new FormData();
       formData.append("image", this.imageFile);
+      formData.append("secondImage", this.imageFile);
       formData.append("id", this.post.id);
       formData.append("address", this.post.address);
       formData.append("name", this.post.name);
