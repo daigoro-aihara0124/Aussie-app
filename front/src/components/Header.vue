@@ -2,6 +2,7 @@
   <div class="container">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <header class="header_menu">
+      <!-- ログインしている場合 -->
       <template v-if="isAuthenticated">
         <div class="home_aicon">
           <router-link to="/"><i class="fas fa-home size"></i></router-link>
@@ -18,7 +19,7 @@
                   <ul class="hamburger_menu">
                     <li class="hamburger_list"><router-link to="/schoolRegister" class="list_item">スクール登録フォーム</router-link></li>
                     <li class="hamburger_list"><router-link to="/schoolIndex" class="list_item">スクール一覧</router-link></li>
-                    <li class="hamburger_list"><router-link to="/ReservedList" class="list_item">予約済みのスクール一覧</router-link></li>
+                    <li class="hamburger_list"><router-link to="/ReservedList" class="list_item">予約済みのスクール</router-link></li>
                     <li class="hamburger_list"><router-link to="/about" class="list_item">About Aussie Journey</router-link></li>
                     <li class="hamburger_list"><router-link to="/mypage" class="list_item">マイページ</router-link></li>
                     <li class="hamburger_list"><span @click="logout" class="guest_btn">ログアウト</span></li>
@@ -28,11 +29,12 @@
               <div class="logo-area">Aussie Journey</div>
           </div>
         </div>
+        <!--メニュー一覧 -->
         <ul class="school_form">
           <div class="school_menu">
             <li><router-link to="/schoolRegister" class="header_item">スクール登録フォーム</router-link></li>
           	<li><router-link to="/schoolIndex" class="header_item">スクール一覧</router-link></li>
-          	<li><router-link to="/ReservedList" class="header_item">予約済みのスクール一覧</router-link></li>
+          	<li><router-link to="/ReservedList" class="header_item">予約済みのスクール</router-link></li>
             <li><router-link to="/about" class="header_item">About Aussie Journey</router-link></li>
           </div>
           <div class="sign_items">
@@ -41,11 +43,13 @@
           </div>
         </ul>
       </template>
+      <!-- ログインしていない場合 -->
       <template v-else>
         <div class="home_aicon">
           <router-link to="/"><i class="fas fa-home size"></i></router-link>
           <h2>Aussie Journey</h2>
         </div>
+        <!-- スマホ用ハンバーガーメニュー -->
         <div class="hamburger_wrapper">
           <div class="header-logo-menu">
             <div id="nav-drawer">
@@ -63,6 +67,7 @@
               <div class="logo-area">Aussie Journey</div>
           </div>
         </div>
+        <!-- メニュー一覧 -->
         <div class="sign_items">
           <span class="guest_btn" @click="guestUserLogin">ゲストユーザーログイン</span>
           <router-link to="/login" class="login_btn">ログイン</router-link>
@@ -186,7 +191,7 @@ export default {
   	overflow: hidden;
     text-align: center;
   	background-color: #808000;
-    width: 645px;
+    width: 616px;
   }
 
   .school_menu li {
@@ -284,7 +289,7 @@ export default {
     left: 0;
     z-index: 9999;
     width: 90%;
-    max-width: 330px;/*最大幅（お好みで調整を）*/
+    max-width: 330px;/*最大幅*/
     height: 50%;
     background: #fff;
     transition: .3s ease-in-out;
