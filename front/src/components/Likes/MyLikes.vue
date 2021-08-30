@@ -4,7 +4,7 @@
       <h2>Favorite School</h2>
     </div>
       <div class="link_description">
-        <h3>School No.(detail pages)</h3>
+        <h3>School No.(go to detail pages)</h3>
       </div>
       <ul v-for="like in likeList" :key="like.id">
         <template v-if="like.user_id == idData.id">
