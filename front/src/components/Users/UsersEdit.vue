@@ -36,7 +36,7 @@
       >
      <button class="delete_bottun" @click="deleteImage">削除する</button>
     </div>
-    <template v-if="isAuthenticated">
+    <template v-if="guestAuthenticated">
       <div class="button_panel">
         <button class="button" @click="updateIdData">編集する</button>
       </div>
@@ -60,7 +60,7 @@ export default {
     };
   },
   computed: {
-    isAuthenticated() {
+    guestAuthenticated() {
       return this.$store.getters.idData['email'] !== 'guest@example.com';
     },
     idData() {

@@ -3,27 +3,29 @@
     <div class="reserveList_name">
       <h2>Reservation list</h2>
     </div>
-      <ul>
-        <li v-for="reserve in reserveDate" :key="reserve.id">
-          <div class="school_name">
-          <label for="comment">Reservation No.： </label>
-            No.{{ reserve.id }}
-          </div>
-          <div class="school_name">
-          <label for="comment">User ID： </label>
-          {{ reserve.user_id }}
-          </div>
-          <div class="school_name">
-          <label for="comment">School No.： </label>
-          <router-link :to="{ path: `/posts/${reserve.post_id}` }" class="link_menu">No.{{ reserve.post_id }}</router-link>
-          </div>
-          <div class="detail_link">
-            <router-link :to="{ path: `/reserves/${reserve.id}/show` }" v-if="reserve.user_id == idData.id" class="user_menu"
-            >
+      <ul v-for="reserve in reserveDate" :key="reserve.id">
+        <template v-if="reserve.user_id == idData.id">
+          <li>
+            <div class="school_name">
+              <label for="comment">Reservation No.： </label>
+                No.{{ reserve.id }}
+            </div>
+            <div class="school_name">
+              <label for="comment">User ID： </label>
+                {{ reserve.user_id }}
+            </div>
+            <div class="school_name">
+              <label for="comment">School No.： </label>
+              <router-link :to="{ path: `/posts/${reserve.post_id}` }" class="link_menu">No.{{ reserve.post_id }}</router-link>
+            </div>
+            <div class="detail_link">
+              <router-link :to="{ path: `/reserves/${reserve.id}/show` }" v-if="reserve.user_id == idData.id" class="user_menu"
+              >
               予約済みページへ
-            </router-link>
-          </div>
-        </li>
+              </router-link>
+            </div>
+          </li>
+        </template>
       </ul>
   </div>
 </template>

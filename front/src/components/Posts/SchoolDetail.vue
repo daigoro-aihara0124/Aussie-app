@@ -67,17 +67,8 @@ export default {
     isAuthenticated() {
       return this.$store.getters.idData['id'] == this.post.user_id;
     },
-    reserveAuthenticated() {
-      return this.$store.getters.idData['id'] !== this.$store.getters.reserve['user_id']
-    },
     post() {
       return this.$store.getters.post;
-    },
-    reserveDate() {
-      return this.$store.getters.reserveDate;
-    },
-    reserve() {
-      return this.$store.getters.reserve;
     },
     idData() {
       return this.$store.getters.idData;
