@@ -8,24 +8,24 @@
       <div class="menu_name">
         <h1>School list</h1>
       </div>
-        <ul>
-          <li v-for="post in search_postData" :key="post.id">
-            <h3 class="edit_name">City</h3>
-            <div class="school_name">
-              {{ post.address }}
-            </div>
-            <h3 class="edit_name">School name</h3>
-            <div class="school_name">
-              No.{{ post.id }}<br>{{ post.name }}
-            </div>
-            <div class="image_position">
-              <img :src="post.image_url" class="post_image" />
-            </div>
-            <div class="detail_link">
-              <router-link :to="{ name: 'SchoolDetail', params: { id: post.id } }" class="user_menu">詳細ページに行く</router-link>
-            </div>
-          </li>
-        </ul>
+      <ul>
+        <li v-for="post in search_postData" :key="post.id">
+          <h3 class="edit_name">City</h3>
+          <div class="school_name">
+            {{ post.address }}
+          </div>
+          <h3 class="edit_name">School name</h3>
+          <div class="school_name">
+            No.{{ post.id }}<br>{{ post.name }}
+          </div>
+          <div class="image_position">
+            <img :src="post.image_url" class="post_image" />
+          </div>
+          <div class="detail_link">
+            <router-link :to="{ name: 'SchoolDetail', params: { id: post.id } }" class="user_menu">詳細ページに行く</router-link>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -55,59 +55,133 @@ export default {
 </script>
 
 <style scoped>
-  .list_container {
-    width: 100%;
+  /* 1201px以上に適用されるCSS（スマホ用） */
+  @media screen and (min-width: 1201px) {
+    .list_container {
+      width: auto;
+      padding: 20px 50px 10px 50px;
+      text-align: center;
+    }
+
+    .list_container .search_box {
+      text-align: left;
+      width: auto;
+    }
+
+    #input_box {
+      width:200px;
+      height:40px;
+      border-radius:2px;
+      outline:0;
+      padding-left: 10px;
+      margin-bottom:10px;
+      background:#eee;
+    }
+
+    .list_wrapper {
+      background: #fafafa;
+      margin: 3em auto;
+      padding: 1em 1em;
+    }
+
+    .list_container ul {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px;
+    }
+
+    .list_container ul li {
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-top: 2em;
+      padding: 0 1em;
+      width: auto;
+    }
+
+    .post_image {
+      height: 150px;
+      width: 150px;
+      margin: 17px;
+      border-radius: 10px;
+      border: 1px solid gray;
+    }
+
+    .image_position {
+      text-align: left;
+    }
+
+    .detail_link {
+      text-align: right;
+    }
   }
+  /* 1200px以下に適用されるCSS（スマホ用） */
+  @media screen and (max-width: 1200px) {
+    .list_container {
+      width: auto;
+      padding: 20px 10px 10px 10px;
+      text-align: center;
+    }
 
-  .list_container .search_box {
-    text-align: left;
-    padding: 20px 100px 10px 50px;
-    width: auto;
+    .list_container .search_box {
+      text-align: left;
+      width: auto;
+    }
+
+    #input_box {
+      width:200px;
+      height:40px;
+      border-radius:2px;
+      outline:0;
+      padding-left: 10px;
+      margin-bottom:10px;
+      background:#eee;
+    }
+
+    .list_wrapper {
+      background: #fafafa;
+      margin: 3em auto;
+      padding: 2em 2em;
+      width: auto;
+    }
+
+    .list_container ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px;
+    }
+
+    .list_container ul li {
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-top: 2em;
+      padding: 0 1em;
+      width: auto;
+    }
+
+    .post_image {
+      height: 150px;
+      width: 150px;
+      margin: 17px;
+      border-radius: 10px;
+      border: 1px solid gray;
+    }
+
+    .image_position {
+      text-align: left;
+    }
+
+    .detail_link {
+      text-align: right;
+    }
   }
+  /* 700px以下に適用されるCSS（スマホ用） */
+  @media screen and (max-width: 700px) {
+    .list_container {
+      width: auto;
+      padding: 20px 10px 10px 10px;
+      text-align: center;
+    }
 
-  #input_box {
-    width:200px;
-    height:40px;
-    border-radius:2px;
-    outline:0;
-    padding-left: 10px;
-    margin-bottom:10px;
-    background:#eee;
-  }
-
-  .post_image {
-    height: 150px;
-    width: 150px;
-    margin: 17px;
-    border-radius: 10px;
-    border: 1px solid gray;
-
-  }
-
-  .list_wrapper {
-    background: #fafafa;
-    margin: 3em auto;
-    padding: 1em 1em;
-    max-width: 800px;
-  }
-
-  li {
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    margin: 3em auto;
-    padding: 0 1em;
-  }
-
-  .image_position {
-    text-align: left;
-  }
-
-  .detail_link {
-    text-align: right;
-  }
-
-  /* 480px以下に適用されるCSS（スマホ用） */
-  @media screen and (max-width: 480px) {
     .search_box {
       text-align: center;
     }
@@ -128,10 +202,20 @@ export default {
       background: #fafafa;
       margin: 1em auto;
       padding: 1em 1em;
-      max-width: 800px;
     }
 
+    .list_container ul {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 50px;
+    }
+
+    .list_container ul li {
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-top: 2em;
+      padding: 0 1em;
+      width: auto;
+    }
   }
-
-
 </style>
