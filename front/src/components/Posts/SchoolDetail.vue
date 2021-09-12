@@ -145,7 +145,7 @@ p {
   }
   .post_image {
     height: 250px;
-    width: 300px;
+    width: auto;
     margin: 5px;
     border-radius: 10px;
     border: 1px solid gray;
@@ -161,7 +161,22 @@ p {
   }
   .post_image {
     height: 200px;
-    width: 300px;
+    width: auto;
+    margin: 5px;
+    border-radius: 10px;
+    border: 1px solid gray;
+  }
+}
+@media screen and (max-width: 360px) {
+  .detail_wrapper {
+    background: #fafafa;
+    margin: 3em 1em;
+    padding: 1em 1em;
+    width: auto;
+  }
+  .post_image {
+    height: 200px;
+    width: 210px;
     margin: 5px;
     border-radius: 10px;
     border: 1px solid gray;
