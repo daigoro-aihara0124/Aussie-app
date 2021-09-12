@@ -73,27 +73,27 @@
 </script>
 
 <style scoped>
-  span {
-    margin-left: 10px;
-  }
+span {
+  margin-left: 10px;
+}
 
-  .like-btn {
-    width: 25px;
-    height: 20px;
-    font-size: 25px;
-    color: #808080;
-    margin-left: 0px;
-    margin-right: 20px;
-    cursor: pointer;
-  }
+.like-btn {
+  width: 25px;
+  height: 20px;
+  font-size: 25px;
+  color: #808080;
+  margin-left: 0px;
+  margin-right: 20px;
+  cursor: pointer;
+}
 
-  .unlike-btn {
-    width: 25px;
-    height: 20px;
-    font-size: 25px;
-    color: #e54747;
-    margin-left: 0px;
-    margin-right: 20px;
-    cursor: pointer;
-  }
+.unlike-btn {
+  width: 25px;
+  height: 20px;
+  font-size: 25px;
+  color: #e54747;
+  margin-left: 0px;
+  margin-right: 20px;
+  cursor: pointer;
+}
 </style>

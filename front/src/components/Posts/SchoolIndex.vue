@@ -55,167 +55,167 @@ export default {
 </script>
 
 <style scoped>
-  /* 1201px以上に適用されるCSS（スマホ用） */
-  @media screen and (min-width: 1201px) {
-    .list_container {
-      width: auto;
-      padding: 20px 50px 10px 50px;
-      text-align: center;
-    }
-
-    .list_container .search_box {
-      text-align: left;
-      width: auto;
-    }
-
-    #input_box {
-      width:200px;
-      height:40px;
-      border-radius:2px;
-      outline:0;
-      padding-left: 10px;
-      margin-bottom:10px;
-      background:#eee;
-    }
-
-    .list_wrapper {
-      background: #fafafa;
-      margin: 3em auto;
-      padding: 1em 1em;
-    }
-
-    .list_container ul {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 50px;
-    }
-
-    .list_container ul li {
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      margin-top: 2em;
-      padding: 0 1em;
-      width: auto;
-    }
-
-    .post_image {
-      height: 150px;
-      width: 150px;
-      margin: 17px;
-      border-radius: 10px;
-      border: 1px solid gray;
-    }
-
-    .image_position {
-      text-align: left;
-    }
-
-    .detail_link {
-      text-align: right;
-    }
+/* 1201px以上に適用されるCSS（スマホ用） */
+@media screen and (min-width: 1201px) {
+  .list_container {
+    width: auto;
+    padding: 20px 50px 10px 50px;
+    text-align: center;
   }
-  /* 1200px以下に適用されるCSS（スマホ用） */
-  @media screen and (max-width: 1200px) {
-    .list_container {
-      width: auto;
-      padding: 20px 10px 10px 10px;
-      text-align: center;
-    }
 
-    .list_container .search_box {
-      text-align: left;
-      width: auto;
-    }
-
-    #input_box {
-      width:200px;
-      height:40px;
-      border-radius:2px;
-      outline:0;
-      padding-left: 10px;
-      margin-bottom:10px;
-      background:#eee;
-    }
-
-    .list_wrapper {
-      background: #fafafa;
-      margin: 3em auto;
-      padding: 2em 2em;
-      width: auto;
-    }
-
-    .list_container ul {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 50px;
-    }
-
-    .list_container ul li {
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      margin-top: 2em;
-      padding: 0 1em;
-      width: auto;
-    }
-
-    .post_image {
-      height: 150px;
-      width: 150px;
-      margin: 17px;
-      border-radius: 10px;
-      border: 1px solid gray;
-    }
-
-    .image_position {
-      text-align: left;
-    }
-
-    .detail_link {
-      text-align: right;
-    }
+  .list_container .search_box {
+    text-align: left;
+    width: auto;
   }
-  /* 700px以下に適用されるCSS（スマホ用） */
-  @media screen and (max-width: 700px) {
-    .list_container {
-      width: auto;
-      padding: 20px 10px 10px 10px;
-      text-align: center;
-    }
 
-    .search_box {
-      text-align: center;
-    }
-
-    .search_box h2 {
-      font-size: 20px;
-    }
-
-    #input_box {
-      width:150px;
-      height:30px;
-      border-radius:2px;
-      outline:0;
-      background:#eee;
-    }
-
-    .list_wrapper {
-      background: #fafafa;
-      margin: 1em auto;
-      padding: 1em 1em;
-    }
-
-    .list_container ul {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-      gap: 50px;
-    }
-
-    .list_container ul li {
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      margin-top: 2em;
-      padding: 0 1em;
-      width: auto;
-    }
+  #input_box {
+    width:200px;
+    height:40px;
+    border-radius:2px;
+    outline:0;
+    padding-left: 10px;
+    margin-bottom:10px;
+    background:#eee;
   }
+
+  .list_wrapper {
+    background: #fafafa;
+    margin: 3em auto;
+    padding: 1em 1em;
+  }
+
+  .list_container ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+  }
+
+  .list_container ul li {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-top: 2em;
+    padding: 0 1em;
+    width: auto;
+  }
+
+  .post_image {
+    height: 150px;
+    width: 150px;
+    margin: 17px;
+    border-radius: 10px;
+    border: 1px solid gray;
+  }
+
+  .image_position {
+    text-align: left;
+  }
+
+  .detail_link {
+    text-align: right;
+  }
+}
+/* 1200px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 1200px) {
+  .list_container {
+    width: auto;
+    padding: 20px 10px 10px 10px;
+    text-align: center;
+  }
+
+  .list_container .search_box {
+    text-align: left;
+    width: auto;
+  }
+
+  #input_box {
+    width:200px;
+    height:40px;
+    border-radius:2px;
+    outline:0;
+    padding-left: 10px;
+    margin-bottom:10px;
+    background:#eee;
+  }
+
+  .list_wrapper {
+    background: #fafafa;
+    margin: 3em auto;
+    padding: 2em 2em;
+    width: auto;
+  }
+
+  .list_container ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+  }
+
+  .list_container ul li {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-top: 2em;
+    padding: 0 1em;
+    width: auto;
+  }
+
+  .post_image {
+    height: 150px;
+    width: 150px;
+    margin: 17px;
+    border-radius: 10px;
+    border: 1px solid gray;
+  }
+
+  .image_position {
+    text-align: left;
+  }
+
+  .detail_link {
+    text-align: right;
+  }
+}
+/* 700px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 700px) {
+  .list_container {
+    width: auto;
+    padding: 20px 10px 10px 10px;
+    text-align: center;
+  }
+
+  .search_box {
+    text-align: center;
+  }
+
+  .search_box h2 {
+    font-size: 20px;
+  }
+
+  #input_box {
+    width:150px;
+    height:30px;
+    border-radius:2px;
+    outline:0;
+    background:#eee;
+  }
+
+  .list_wrapper {
+    background: #fafafa;
+    margin: 1em auto;
+    padding: 1em 1em;
+  }
+
+  .list_container ul {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 50px;
+  }
+
+  .list_container ul li {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-top: 2em;
+    padding: 0 1em;
+    width: auto;
+  }
+}
 </style>

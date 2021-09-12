@@ -18,9 +18,7 @@
 </script>
 
 <style scoped>
-  .message_area .message {
-    font-size: 1.5em;
-  }
-
-
+.message_area .message {
+  font-size: 1.5em;
+}
 </style>

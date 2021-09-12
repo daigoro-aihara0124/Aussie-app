@@ -21,11 +21,11 @@
       </div>
       <div class="cp_iptxt">
         <input
-        :type="inputType"
-        id="password"
-        class="input"
-        v-model="password"
-        placeholder="password(必須) 8文字以上"
+          :type="inputType"
+          id="password"
+          class="input"
+          v-model="password"
+          placeholder="password(必須) 8文字以上"
         >
         <span class="input_icon">
           <span :class="iconType" @click="onClick"></span>

@@ -3,16 +3,16 @@
     <div class="likeList_name">
       <h2>Favorite School</h2>
     </div>
-      <div class="link_description">
-        <h3>School No.(go to detail pages)</h3>
-      </div>
-      <ul v-for="like in likeList" :key="like.id">
-        <template v-if="like.user_id == idData.id">
-          <li class="list_number">
-            <router-link :to="{ path: `/posts/${like.post_id}` }" class="link_menu">No.{{ like.post_id }}</router-link>
-          </li>
-        </template>
-      </ul>
+    <div class="link_description">
+      <h3>School No.(go to detail pages)</h3>
+    </div>
+    <ul v-for="like in likeList" :key="like.id">
+      <template v-if="like.user_id == idData.id">
+        <li class="list_number">
+          <router-link :to="{ path: `/posts/${like.post_id}` }" class="link_menu">No.{{ like.post_id }}</router-link>
+        </li>
+      </template>
+    </ul>
   </div>
 </template>
 
@@ -59,7 +59,6 @@ export default {
 </script>
 
 <style scoped>
-
 .likeList_name {
   text-align:left;
   font-weight:bold;
