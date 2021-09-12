@@ -1,12 +1,12 @@
 <template>
   <div>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-      <i v-if="isLiked" @click="deleteLike()" class="far fa-heart unlike-btn">
-        <span>{{ count }}</span>
-      </i>
-      <i v-else @click="registerLike()" class="far fa-heart like-btn">
-        <span>{{ count }}</span>
-      </i>
+    <i v-if="isLiked" @click="deleteLike()" class="far fa-heart unlike-btn">
+      <span>{{ count }}</span>
+    </i>
+    <i v-else @click="registerLike()" class="far fa-heart like-btn">
+      <span>{{ count }}</span>
+    </i>
   </div>
 </template>
 
@@ -36,23 +36,12 @@
       this.likeList = result
     })
   },
-  // created() {
-  //   this.$store.dispatch('createdLike').then(result => {
-  //     this.likeList = result
-  //   })
-  // },
   methods: {
     async createdLike() {
       const res = await axios.get(`/api/v1/likes/?post_id=${this.$route.params.id}`)
       if (res.status !== 200) { process.exit() }
       return res.data
     },
-    // async registerLike() {
-    //   await this.$store.dispatch('registerLike', {
-    //     likeList: this.likeList,
-    //     post_id: this.post_id
-    //   });
-    // },
     registerLike: async function() {
         const res = await axios.post('api/v1/likes', { post_id: this.$route.params.id }, {
         headers: {
@@ -66,11 +55,6 @@
        this.likeList = result
      })
     },
-    // rails側のdestroyアクションにリクエストするメソッド
-    // async deleteLike() {
-    //   const likeid = this.findLikeId()
-    //   await this.$store.dispatch('deleteLike', likeid)
-    // },
     deleteLike: async function() {
       const likeId = this.findLikeId()
       const res = await axios.delete(`api/v1/likes/${likeId}`)
@@ -89,29 +73,27 @@
 </script>
 
 <style scoped>
-
 span {
   margin-left: 10px;
 }
 
 .like-btn {
-width: 25px;
-height: 20px;
-font-size: 25px;
-color: #808080;
-margin-left: 0px;
-margin-right: 20px;
-cursor: pointer;
+  width: 25px;
+  height: 20px;
+  font-size: 25px;
+  color: #808080;
+  margin-left: 0px;
+  margin-right: 20px;
+  cursor: pointer;
 }
 
 .unlike-btn {
-width: 25px;
-height: 20px;
-font-size: 25px;
-color: #e54747;
-margin-left: 0px;
-margin-right: 20px;
-cursor: pointer;
+  width: 25px;
+  height: 20px;
+  font-size: 25px;
+  color: #e54747;
+  margin-left: 0px;
+  margin-right: 20px;
+  cursor: pointer;
 }
-
 </style>

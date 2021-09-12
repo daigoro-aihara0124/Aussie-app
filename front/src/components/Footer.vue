@@ -9,7 +9,6 @@
 </template>
 
 <style scoped>
-
 footer {
   background-color: whitesmoke;
   height: 80px;
@@ -30,7 +29,6 @@ span {
   font-size: 12px;
   text-align: center;
 }
-
 /* 480px以下に適用されるCSS（スマホ用） */
 @media screen and (max-width: 480px) {
   footer {
@@ -54,6 +52,4 @@ span {
     text-align: center;
   }
 }
-
-
 </style>

@@ -121,13 +121,11 @@ export default {
 </script>
 
 <style scoped>
-
-  .date {
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-    width: 100%;
-  }
-
+.date {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  width: 100%;
+}
 </style>

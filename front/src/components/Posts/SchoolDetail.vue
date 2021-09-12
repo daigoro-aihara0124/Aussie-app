@@ -81,62 +81,105 @@ export default {
 </script>
 
 <style scoped>
-  .post_image {
-    height: 400px;
-    width: 600px;
-    margin: 17px;
-    border-radius: 10px;
-    border: 1px solid gray;
-  }
+.detail_wrapper {
+  background: #fafafa;
+  margin: 3em auto;
+  padding: 1em 1em;
+  width: 1000px;
+}
 
+.like_position {
+  text-align: right;
+}
+
+.post_image {
+  height: 400px;
+  width: 600px;
+  margin: 17px;
+  border-radius: 10px;
+  border: 1px solid gray;
+}
+
+li {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin: 3em auto;
+  padding: 0 1em;
+}
+
+p {
+  margin-left: 2rem;
+}
+
+.reserve_link {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: right;
+  margin: 1.2rem auto 1.2rem;
+  letter-spacing:.1rem;
+  border-bottom: solid #1e366a 1px;/*下のボーダー*/
+}
+
+.edit_link {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: right;
+  margin: 1rem auto 1rem;
+  letter-spacing:.1rem;
+}
+@media screen and (max-width: 1200px) {
   .detail_wrapper {
     background: #fafafa;
-    margin: 3em auto;
+    margin: 3em 1em;
     padding: 1em 1em;
-    max-width: 1000px;
+    width: auto;
   }
-
-  li {
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    margin: 3em auto;
-    padding: 0 1em;
+}
+/* 700px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 700px) {
+  .detail_wrapper {
+    background: #fafafa;
+    margin: 3em 1em;
+    padding: 1em 1em;
+    width: auto;
   }
-
-  p {
-    margin-left: 2rem;
-  }
-
-  .like_position {
-    text-align: right;
-  }
-
-  .reserve_link {
-    font-size: 1.2em;
-    font-weight: bold;
-    text-align: right;
-    margin: 1.2rem auto 1.2rem;
-    letter-spacing:.1rem;
-    border-bottom: solid #1e366a 1px;/*下のボーダー*/
-  }
-
-  .edit_link {
-    font-size: 1.2em;
-    font-weight: bold;
-    text-align: right;
-    margin: 1rem auto 1rem;
-    letter-spacing:.1rem;
-  }
-
-  /* 480px以下に適用されるCSS（スマホ用） */
-@media screen and (max-width: 480px) {
   .post_image {
-    height: 200px;
-    width: 300px;
+    height: 250px;
+    width: auto;
     margin: 5px;
     border-radius: 10px;
     border: 1px solid gray;
   }
 }
-
+/* 480px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 480px) {
+  .detail_wrapper {
+    background: #fafafa;
+    margin: 3em 1em;
+    padding: 1em 1em;
+    width: auto;
+  }
+  .post_image {
+    height: 200px;
+    width: auto;
+    margin: 5px;
+    border-radius: 10px;
+    border: 1px solid gray;
+  }
+}
+@media screen and (max-width: 360px) {
+  .detail_wrapper {
+    background: #fafafa;
+    margin: 3em 1em;
+    padding: 1em 1em;
+    width: auto;
+  }
+  .post_image {
+    height: 200px;
+    width: 210px;
+    margin: 5px;
+    border-radius: 10px;
+    border: 1px solid gray;
+  }
+}
 </style>

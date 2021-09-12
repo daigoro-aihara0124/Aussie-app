@@ -36,14 +36,8 @@ export default {
 </script>
 
 <style scoped>
-  .profile_wrapper {
-    background: #fafafa;
-    margin: 3em auto;
-    padding: 0 1em;
-    max-width: 500px;
-  }
 
-  .profile_menu {
+.profile_menu {
   text-align:left;
   font-weight:bold;
   font-size:1.2rem;
@@ -64,5 +58,37 @@ ul li {
   text-align: left;
   list-style:none;
 }
+
+@media screen and (max-width: 1200px) {
+  .profile_wrapper {
+    background: #fafafa;
+    margin: 3em 1em;
+    padding: 0 1em;
+    width: auto;
+  }
+
+  .profile_menu {
+    text-align:left;
+    font-weight:bold;
+    font-size:1.2rem;
+    margin: 1rem auto 1rem;
+    letter-spacing:.1rem;
+  }
+
+  ul {
+    color: #1e366a;
+    border-top: solid #1e366a 1px;/*上のボーダー*/
+    border-bottom: solid #1e366a 1px;/*下のボーダー*/
+    padding: 0.5em 0 0.5em 1.5em;
+  }
+
+  ul li {
+    line-height: 1.5;
+    padding: 0.5em 0;
+    text-align: left;
+    list-style:none;
+  }
+}
+
 
 </style>

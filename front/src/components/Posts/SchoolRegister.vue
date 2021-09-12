@@ -61,13 +61,7 @@ export default {
   data() {
     return {
       imageFile: null,
-      post: {
-        address: '',
-        name: '',
-        comment: '',
-        term: '',
-        fee: ''
-      }
+      post:[]
     };
   },
   computed: {
@@ -97,7 +91,7 @@ export default {
         })
       }
       catch (error) {
-        alert("入力に誤りがあります");
+        alert("入力に誤りがあります。写真が選択されていません。");
       }
     }
   }

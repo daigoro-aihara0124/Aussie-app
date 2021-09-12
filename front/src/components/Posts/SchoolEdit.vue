@@ -7,11 +7,11 @@
       <div class="cp_iptxt">
         <h3 class="edit_name">Photo</h3>
         <input
-        type="file"
-        id="image"
-        name="image"
-        accept="image/*"
-        @change="setImage"
+          type="file"
+          id="image"
+          name="image"
+          accept="image/*"
+          @change="setImage"
         >
       </div>
       <div class="cp_iptxt">
@@ -108,7 +108,7 @@ export default {
         })
       }
       catch (error) {
-        alert("入力に誤りがあります");
+        alert("入力に誤りがあります。写真が選択されていません。");
       }
     },
     async del(postid) { // 追加
@@ -129,11 +129,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-.text_top {
-   vertical-align: top;
- }
-
-</style>

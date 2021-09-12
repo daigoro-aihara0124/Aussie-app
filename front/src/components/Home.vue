@@ -15,7 +15,6 @@
 </template>
 
 <script>
-
 export default {
   computed: {
     isAuthenticated() {
@@ -32,7 +31,7 @@ export default {
 }
 
 .bg_image {
-  background-image: url('../assets/images/bg_img.jpeg');
+  background-image: url('../assets/images/22025032_m.jpg');
   min-height: 100vh;;
   width: 100%;
   background-size:  cover;
@@ -41,10 +40,10 @@ export default {
   border: solid 2px;      /* 枠線指定 */
 }
 
-.bg_text {                         /* 枠線指定 */
+.bg_text {
   display:  block;
-  text-align: left;                 /* インラインブロックにする */
-  padding: 30px 20px;                             /* 余白指定 */
+  text-align: left;
+  padding: 30px 20px;
   font-family: 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',sans-serif;
   color: #003399;
   font-size: 1.5em;
@@ -54,9 +53,8 @@ export default {
 .bg_text h3 {
   color: #CC0000;
 }
-
-/* 480px以下に適用されるCSS（スマホ用） */
-@media screen and (max-width: 480px) {
+/* 700px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 700px) {
   .home_wrapper {
     min-height: 100vh;
     width: 100%;
@@ -68,21 +66,21 @@ export default {
     background-size:  cover;
     text-align:  center;    /* 文字中央寄せ */
     margin-top: 0px;    /* 余白指定 */
-    border: solid 2px;      /* 枠線指定 */
+    border: solid 2px; /* 枠線指定 */
+    z-index: 0;
   }
 
-  .bg_text {                         /* 枠線指定 */
+  .bg_text {
     display:  block;
-    text-align: left;                 /* インラインブロックにする */
-    padding: 50px 10px;                             /* 余白指定 */
-    font-family: 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',sans-serif;
+    text-align: left;
+    padding: 50px 10px;
     color: #ffff00;
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: bold;
   }
 
   .bg_text h3 {
-    color: #00CC66;
+    color: #fff;
   }
 }
 
@@ -135,5 +133,4 @@ section {
   border-top: 2px solid #228bc8;
   border-right: 2px solid #228bc8;
 }
-
 </style>
