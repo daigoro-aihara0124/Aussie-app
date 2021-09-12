@@ -34,7 +34,7 @@
         name="user[image]"
         class="hidden"
       >
-     <button class="delete_bottun" @click="deleteImage">削除する</button>
+      <button class="delete_bottun" @click="deleteImage">削除する</button>
     </div>
     <template v-if="guestAuthenticated">
       <div class="button_panel">
@@ -103,32 +103,54 @@ export default {
 </script>
 
 <style scoped>
-.text_top {
-   vertical-align: top;
-}
+  .text_top {
+     vertical-align: top;
+  }
 
-.user_image{
-  cursor: pointer;
-}
+  .user_image{
+    cursor: pointer;
+  }
 
-.image_field{
-    padding-left: 20px;
-    list-style:none;
-}
+  .image_field{
+      padding-left: 20px;
+      list-style:none;
+  }
 
-.profile_wrapper {
-  background: #fafafa;
-  margin: 3em auto;
-  padding: 1em 1em;
-  max-width: 500px;
-}
+  .edit_name {
+    text-align:left;
+  }
 
+  .delete_bottun {
+    cursor: pointer;
+  }
+  /* 1200px以下に適用されるCSS */
+  @media screen and (max-width: 1200px) {
+    .profile_wrapper {
+      background: #fafafa;
+      margin: 3em 1em;
+      padding: 0 1em;
+      width: auto;
+    }
 
-.edit_name {
-  text-align:left;
-}
+    .text_top {
+       vertical-align: top;
+    }
 
-.delete_bottun {
-  cursor: pointer;
-}
+    .user_image{
+      cursor: pointer;
+    }
+
+    .image_field{
+        padding-left: 20px;
+        list-style:none;
+    }
+
+    .edit_name {
+      text-align:left;
+    }
+
+    .delete_bottun {
+      cursor: pointer;
+    }
+  }
 </style>
