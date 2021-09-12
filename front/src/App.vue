@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <Header/>
     <FlashMessage/>
     <router-view></router-view>
@@ -21,7 +22,6 @@ export default {
 };
 </script>
 
-
 <style>
 * {
   margin: 0px;
@@ -29,7 +29,7 @@ export default {
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -39,8 +39,7 @@ export default {
   padding-bottom: 100px;
   box-sizing: border-box;
 }
-
-/* プロフィール画像 */
+/* マイページ */
 .user_image{
   height: 150px;
   width: 150px;
@@ -48,7 +47,12 @@ export default {
   border-radius: 50%;
   border: 1px solid gray;
 }
-
+.profile_wrapper {
+  background: #fafafa;
+  margin: 3em auto;
+  padding: 0 1em;
+  width: 1000px;
+}
 /* ページタイトル */
 .menu_name {
 text-align:left;
@@ -57,13 +61,21 @@ font-size:1.2rem;
 margin: 1rem auto 1rem;
 letter-spacing:.1rem;
 }
-
 /* ログイン、登録機能、編集機能、お気に入り一覧共通 */
 .form_wrapper {
   background: #fafafa;
   margin: 3em auto;
   padding: 1em 1em;
-  max-width: 500px;
+  width: 1000px;
+}
+/* 1200px以下に適用されるCSS */
+@media screen and (max-width: 1200px) {
+  .form_wrapper {
+    background: #fafafa;
+    margin: 3em 1em;
+    padding: 1em 1em;
+    width: auto;
+  }
 }
 
 ul li {
@@ -135,7 +147,6 @@ outline: none;
 
 .button_panel {
   margin: 2em 0 0;
-  width: 100%;
 }
 
 .button_panel .button {
@@ -151,13 +162,12 @@ outline: none;
   text-align: center;
   text-transform: uppercase;
   transition: background 0.3s ease-in-out;
-  width: 100%;
+  width: 50%;
 }
 
 .button:hover {
   background: #ee3e52;
 }
-
 /* register,loginのマスク */
 .eye::after {
   font-family: 'FontAwesome';
@@ -177,7 +187,6 @@ outline: none;
 .hidden {
   display: none;
 }
-
 /* 投稿一覧、詳細 */
 .school_name {
   font-size: 1.2em;
@@ -186,21 +195,20 @@ outline: none;
   margin: 1.2rem auto 1.2rem;
   letter-spacing:.1rem;
   border-bottom: solid #1e366a 1px;/*下のボーダー*/
-  }
-
+}
 /* リンク用 */
-  .user_menu {
-    transition: .4s;
-    text-decoration: none;
-  }
-  .user_menu:hover {
-    color: #996633;
-  }
+.user_menu {
+  transition: .4s;
+  text-decoration: none;
+}
+.user_menu:hover {
+  color: #996633;
+}
 
-  .link_menu {
-    transition: .4s;
-  }
-  .link_menu:hover {
-    color: #996633;
-  }
+.link_menu {
+  transition: .4s;
+}
+.link_menu:hover {
+  color: #996633;
+}
 </style>
